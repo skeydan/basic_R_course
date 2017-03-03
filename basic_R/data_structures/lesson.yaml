@@ -1,0 +1,19 @@
+- Class: meta
+  Course: basic_R
+  Lesson: data_structures
+  Author: your name goes here
+  Type: Standard
+  Organization: your organization's name goes here
+  Version: 2.4.2
+
+- Class: text
+  Output: In this lesson, we'll get to know compound data structures in R: vectors, lists, matrices, arrays, and data frames.
+    But first, let me say that there really is no difference in R between scalars and non-scalars: 
+    All objects are in fact non-scalars.
+    
+- Class: text
+  Output: For example, the number 122 is in fact just a vector of length 1, containing the number 1. 
+    This is the reason you can not just type length(c(111,222,333)), but also length(111) ... do this now to see the output.
+  AnswerTests: omnitest(correctExpr='length(111)')
+  Hint: Just type length(111).
+  
