@@ -1,0 +1,88 @@
+- Class: meta
+  Course: basic_R
+  Lesson: vectorization
+  Author: Sigrid Keydana
+  Type: Standard
+  Organization: Trivadis
+  Version: 2.4.2
+
+#1
+- Class: text
+  Output: In this lesson, we'll look at an amazing feature of R: vectorization.
+
+#2
+- Class: text
+  Output: Remember how there are really no scalars in R?
+    This also means that operations usually thought of as being performed on scalars are performed on vector objects in R.
+    These operations are called vectorized.
+    
+#3
+- Class: cmd_question
+  Output: For example, please go ahead and define a vector v as the sequence of integers from -10 to 10.
+  AnswerTests: omnitest('v <- -10:10')
+  Hint: Just type v <- -10:10.
+  
+#4
+- Class: cmd_question
+  Output: Now, typing <vector> + <number> will add <number> to every element of <vector>.
+    Add 7 to every element of v now.
+  AnswerTests: omnitest(correctVal = '-10:10 + 7')
+  Hint: Just type v + 7.
+
+#5
+- Class: cmd_question
+  Output: Nice right? Now create a vector v2 containing the numbers from 10 to -10.
+  AnswerTests: omnitest('v2 <- 10:-10')
+  Hint: Just type v2 <- 10:-10.
+
+#6
+- Class: cmd_question
+  Output: Because of vectorization, you can now add up the vectors, which is equivalent to adding up their elements.
+    Please add v and v2 now.
+  AnswerTests: omnitest(correctVal = 'v + v2')
+  Hint: Just type v + v2.  
+
+
+#7
+- Class: text
+  Output: Vectorization has many uses. In many cases, it helps avoid expensive looping constructs.
+    This may lead to large performance gains.
+
+
+#8
+- Class: cmd_question
+  Output: We haven't touched on the subject of loops yet, but we can do a quick test.
+    Define a vector v of 1 million standard normally distributed elements, like this: v <- rnorm(1000000).
+  AnswerTests: omnitest(correctExpr='v <- rnorm(1000000)')
+  Hint: Just type v <- rnorm(1000000).
+
+#9
+- Class: cmd_question
+  Output: Execution timing in R can be done using system.time().
+  How long does it take to square the vector v? (x^2 squares a number x.)
+  AnswerTests: omnitest(system.time(v^2))
+  Hint: Just type system.time(v^2). 
+  
+#10
+- Class: cmd_question
+  Output: Now compare that to how long it would take using a for loop. Type system.time(for (i in v) {i^2}).
+  AnswerTests: omnitest(system.time(for (i in v) {i^2}))
+  Hint: Just type system.time(for (i in v) {i^2}). 
+  
+#11
+- Class: text
+  Output: Quite a difference right?
+  
+#12
+- Class: text
+  Output: With vectorization used simultaneously on several vectors, pay attention to the vectors' length.
+    Unless you really know what you're doing and have a special purpose, all vectors involved should normally be of the same length.
+    
+#13
+- Class: mult_question
+  Output: What is the capital of Canada?
+  AnswerChoices: Toronto;Montreal;Ottawa;Vancouver
+  CorrectAnswer: Ottawa
+  AnswerTests: omnitest(correctVal='Ottawa')
+  Hint: This city contains the Rideau Canal.    
+   

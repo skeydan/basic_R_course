@@ -1,0 +1,54 @@
+- Class: meta
+  Course: basic_R
+  Lesson: subsetting
+  Author: Sigrid Keydana
+  Type: Standard
+  Organization: Trivadis
+  Version: 2.4.2
+
+#1
+- Class: text
+  Output: Now that we've covered compound data structures, we need to know how to access items (or subsets) of these structures.
+   
+#2
+- Class: text
+  Output: Again, we'll start with the vector.
+  
+#3
+- Class: text
+  Output: You can access specific items using brackets. Inside the brackets, a vector(!) of indices tells R which elements you want to get outer(
+     Indexing starts at 1
+    
+#4
+- Class: text
+  Output: Indexing starts at 1. To access the first item, type myvector[1].
+    
+#5
+- Class: text
+  Output: To access elements 1 to 5 (that is, consecutive elements), type myvector[1:5].  
+  
+#6
+- Class: text
+  Output: To access elements 1 and 5 (which aren't consecutive), type myvector[c(1,5)]. 
+ 
+#7
+- Class: cmd_question
+  Output:  Create a vector of numbers from 10 to 20 and assign it to myvector.
+  AnswerTests: omnitest('myvector <- 10:20')
+  Hint: Just type myvector <- 10:20.
+  
+#8
+- Class: cmd_question
+  Output:  Now, extract the last two elements from this vector.
+  AnswerTests: omnitest(correctVal = 19:20')
+  Hint: Just type myvector[10:11].
+  
+#9
+- Class: text
+  Output:  You can also use the minus sign to indicate which elements you don't want. For example, to see all but the first element, you'd type myvector[-1].
+  
+#10
+- Class: text
+  Output: Let's move on to subsetting lists now.
+  
+  

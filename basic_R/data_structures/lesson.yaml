@@ -1,55 +1,189 @@
 - Class: meta
   Course: basic_R
   Lesson: data_structures
-  Author: your name goes here
+  Author: Sigrid Keydana
   Type: Standard
-  Organization: your organization's name goes here
+  Organization: Trivadis
   Version: 2.4.2
 
+  #1
 - Class: text
-  Output: In this lesson, we'll get to know compound data structures in R: vectors, lists, matrices, arrays, and data frames.
-    But first, let me say that there really is no difference in R between scalars and non-scalars: 
+  Output: In this lesson, we'll get to know compound data structures in R. That is, vectors, lists, matrices, arrays, and data frames.
+  
+  #2
+- Class: text
+  Output: Before we start, let me remind you that at any time, you can enter play() on the console and try out things for yourself.
+    In order to continue, just type nxt().
+
+  #3
+- Class: text
+  Output: OK. Now on to data structures. First, let me say that there really is no difference in R between scalars and non-scalars. 
     All objects are in fact non-scalars.
     
+  #4
 - Class: cmd_question
   Output: For example, the number 122 is in fact just a vector of length 1, containing the number 1. 
     This is the reason you can not just type length(c(111,222,333)), but also length(111) ... do this now to see the output.
   AnswerTests: omnitest(correctExpr='length(111)')
   Hint: Just type length(111).
   
+  #5
 - Class: text
-  Output: Data structures may be classified according to two main criteria: their dimensionality (1, 2, or n-dimensional) as well as
+  Output: Data structures may be classified according to two main criteria - their dimensionality (1, 2, or n-dimensional) as well as
     the homogeneity or heterogeneity of objects they may contain.
     
+  #6 
 - Class: text
   Output: Regarding dimensionality, vectors are one-dimensional, matrices are two-dimensional, and arrays are n-dimensional objects.
     All three have in common that they may only contain one type of object.
     
+  #7  
 - Class: cmd_question
   Output: Let's start with vectors. Vectors are created using c(). 
     Create a vector v1 containing the elements "alpha", "beta" and "gamma" (in this order).
-  AnswerTests: omnitest(v1 <- c("alpha", "beta", "gamma"))
+  AnswerTests: omnitest(correctVal = c("alpha", "beta", "gamma"))
   Hint: Just type v1 <- c("alpha", "beta", "gamma").    
     
+  #8  
 - Class: cmd_question
   Output: Next, create a vector v2 containing the numbers from 33 to 35.
   AnswerTests: omnitest('v2 <- c(33,34,35)')
   Hint: Just type v2 <- c(33,34,35).
   
+  #9
 - Class: cmd_question
   Output: Now, concatenate both vectors and call the result v3.
   AnswerTests: omnitest('v3 <- c(v1,v2)')
   Hint: Just type v3 <- c(v1,v2).
   
-- Class: cmd_question
+  #10
+- Class: text
   Output: As you see, the result is not a nested vector, but has been flattened. Vectors cannot contain other vectors.
-    Now, given that we've concatenated two different data types, what type will the resulting vector have?
+   
+ 
+  #11
+- Class: cmd_question
+  Output: Now, given that we've concatenated two different data types, what type will the resulting vector have?
     As we said vectors always have to be of a single data type only.
     Go ahead and check (you could use typeof() to get the internal data type, is.numeric() to check for numerical data,
     or is.character to test for character data.)
   AnswerTests: any_of_exprs('typeof(v3)', 'is.character(v3)', 'is.numeric(v3)')
   Hint: Just type typeof(v3).
- 
+
+  #12
+- Class: text
+  Output: Evidently, the numbers got coerced to strings. (It wouldn't make much sense otherwise.)
+  
+  #13
+- Class: cmd_question
+  Output: Right now, we've created a numeric vector by enumerating every single item.
+    We can create sequences of consecutive numbers in an easier way. Type 1:10 to see what happens.
+  AnswerTests: omnitest('1:10')
+  Hint: Just type 1:10.
+  
+  #14
+- Class: cmd_question
+  Output: The same thing works for ascending numbers. Use the above syntax to create a vector of numbers from -99 to -107.
+  AnswerTests: omnitest('-99:-107')
+  Hint: Just type -99:-107.
+  
+  #15
+- Class: text
+  Output: Yet another way to create a sequence of numbers is using seq().
+    seq() takes arguments by and length.out that allow you to specify a step size or the number of intermediate values to generate.
    
-    
-    
+  #16
+- Class: text
+  Output: The syntax is seq(from = 1, to = 1, by = ((to - from)/(length.out - 1)),
+    length.out = NULL, along.with = NULL, ...)
+    Here, you see that every parameter has a default value that will be used if you don't pass in anything.
+
+  #17
+- Class: cmd_question
+  Output: Now, create a vector containing the numbers 10,15,20,25 using seq.
+  AnswerTests: omnitest(correctVal = 'seq(10,25,5)')
+  Hint: Just type seq(10,25,5).
+  
+  #18
+- Class: cmd_question
+  Output: Now, create a vector between 0 and 1 containing 10 entries.
+  AnswerTests: omnitest(correctVal = 'seq(0,1,length.out = 10')
+  Hint: Just type .
+  
+  #19
+- Class: text
+  Output: Let's pass on to lists.
+  AnswerTests: omnitest('')
+  Hint: Just type .
+  
+  #
+- Class: cmd_question
+  Output: 
+  AnswerTests: omnitest('')
+  Hint: Just type .
+  
+  #
+- Class: cmd_question
+  Output: 
+  AnswerTests: omnitest('')
+  Hint: Just type .
+  
+  #
+- Class: cmd_question
+  Output: 
+  AnswerTests: omnitest('')
+  Hint: Just type .
+  
+  #
+- Class: cmd_question
+  Output: 
+  AnswerTests: omnitest('')
+  Hint: Just type .
+  
+  #
+- Class: cmd_question
+  Output: 
+  AnswerTests: omnitest('')
+  Hint: Just type .
+  
+  #
+- Class: cmd_question
+  Output: 
+  AnswerTests: omnitest('')
+  Hint: Just type .
+  
+  #
+- Class: cmd_question
+  Output: 
+  AnswerTests: omnitest('')
+  Hint: Just type .
+  
+  #
+- Class: cmd_question
+  Output: 
+  AnswerTests: omnitest('')
+  Hint: Just type .
+  
+  #
+- Class: cmd_question
+  Output: 
+  AnswerTests: omnitest('')
+  Hint: Just type .
+  
+  #
+- Class: cmd_question
+  Output: 
+  AnswerTests: omnitest('')
+  Hint: Just type .
+  
+  #
+- Class: cmd_question
+  Output: 
+  AnswerTests: omnitest('')
+  Hint: Just type .
+  
+  #
+- Class: cmd_question
+  Output: 
+  AnswerTests: omnitest('')
+  Hint: Just type .
