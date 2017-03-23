@@ -113,77 +113,98 @@
   #19
 - Class: text
   Output: Let's pass on to lists.
-  AnswerTests: omnitest('')
-  Hint: Just type .
+  
+  #20
+- Class: text
+  Output: When you need objects of different types in a one-dimensional container, you need to use a list instead of a vector.
+    Lists can even contain complex data structures like other lists, or dataframes.
+  
+  #21
+- Class: cmd_question
+  Output: Lists are created with the list() constructor, as in mylist <- list('a',1 , TRUE).
+    To try this out, create a list mylist containing the numbers from 1 to 3, the boolean FALSE, and the letters from x to z.
+  AnswerTests: omnitest(correctVal = 'mylist <- list(1, 2, 3, FALSE, "x", "y","z")')
+  Hint: Just type mylist <- list(1, 2, 3, FALSE, 'x', 'y','z')
+  
+  #22
+- Class: cmd_question
+  Output: If you did this as expected, you created a flat list, with no substructure.
+    Display the list to see how R prints lists.
+  AnswerTests: omnitest('mylist')
+  Hint: Just type mylist.
+  
+  #23
+- Class: cmd_question
+  Output: How many elements does mylist have? You can find this out using the length() function.
+  AnswerTests: omnitest('length(mylist)')
+  Hint: Just type length(mylist).
+  
+  #24
+- Class: cmd_question
+  Output: Perhaps you initially tried creating mylist using the colon operator.
+    To see what happens in this case, create another list, list2, containing the same elements but this time, using 1:3 instead of enumerating every single number.
+    Also, instead of entering every character by itself, use letters[24:26] to access the last three letters of the alphabet.
+  AnswerTests: omnitest('list2 <- list(1:3, FALSE, letters[24:26])')
+  Hint: Just type list2 <- list(1:3, FALSE, letters[24:26]).
+  
+  #25
+- Class: mult_question
+  Output: What do you think is the length of this list?
+  AnswerChoices: 1;3;6;7
+  CorrectAnswer: 3
+  
+  #26
+- Class: cmd_question
+  Output: Now test for yourself.
+  AnswerTests: omnitest('length(list2)')
+  Hint: Just type length(mylist2).
   
   #
 - Class: cmd_question
-  Output: 
-  AnswerTests: omnitest('')
-  Hint: Just type .
+  Output: Also, look how it prints and watch the difference to the first list (mylist).
+  AnswerTests: omnitest('list2')
+  Hint: Just type list2.
+  
+  #
+- Class: text
+  Output: While you can also name vector elements, this is not usually done. With lists, however, it is different.
   
   #
 - Class: cmd_question
-  Output: 
-  AnswerTests: omnitest('')
-  Hint: Just type .
+  Output: First now, find out if list2 has any named elements, using names().
+  AnswerTests: omnitest('names(list2)')
+  Hint: Just type names(list2).
   
   #
 - Class: cmd_question
-  Output: 
-  AnswerTests: omnitest('')
-  Hint: Just type .
+  Output: So at the moment the elements are not named. 
+    You can name them, "after the fact", doing something like names(somelist) <- c(name1, name2, name3, ...)
+    I suggest you name the elements of list2 "numbers", "logical", and "letters".
+  AnswerTests: omnitest('names(list2) <- c("numbers", "logical", "letters")')
+  Hint: Just type names(list2) <- c("numbers", "logical", "letters").
   
   #
 - Class: cmd_question
-  Output: 
-  AnswerTests: omnitest('')
-  Hint: Just type .
+  Output: Print list2 to see how it looks now.
+  AnswerTests: omnitest('list2')
+  Hint: Just type list2.
+  
+- Class: cmd_question
+  Output: Alternatively, you could have created the list including the names right from the beginning, using key - value pairs.
+    For example, list(name1 = val1, name2 = val2, ...). Do this for our list2 now (thus overwriting the list2 variable).
+  AnswerTests: omnitest('list2 <- list(numbers = 1:3, logical = FALSE, letters = letters[24:26])')
+  Hint: Just type list2 <- list(numbers = 1:3, logical = FALSE, letters = letters[24:26]).
+  
   
   #
-- Class: cmd_question
-  Output: 
-  AnswerTests: omnitest('')
-  Hint: Just type .
-  
+- Class: text
+  Output: While vectors and lists are both one-dimensional data types, one dimension often isn't enough.
+    So let's move on to two dimensions.
+    
   #
-- Class: cmd_question
-  Output: 
-  AnswerTests: omnitest('')
-  Hint: Just type .
-  
+- Class: text
+  Output: Here too, we have to distinguish two cases: homogeneous (all items are of the same type) and heterogeneous containers.
+       
   #
-- Class: cmd_question
+- Class: text
   Output: 
-  AnswerTests: omnitest('')
-  Hint: Just type .
-  
-  #
-- Class: cmd_question
-  Output: 
-  AnswerTests: omnitest('')
-  Hint: Just type .
-  
-  #
-- Class: cmd_question
-  Output: 
-  AnswerTests: omnitest('')
-  Hint: Just type .
-  
-  #
-- Class: cmd_question
-  Output: 
-  AnswerTests: omnitest('')
-  Hint: Just type .
-  
-  #
-- Class: cmd_question
-  Output: 
-  AnswerTests: omnitest('')
-  Hint: Just type .
-  
-  #
-- Class: cmd_question
-  Output: 
-  AnswerTests: omnitest('')
-  Hint: Just type .

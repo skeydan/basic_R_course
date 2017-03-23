@@ -1,0 +1,24 @@
+---
+title: "R performance"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+http://rpubs.com/daspringate/vectorisation
+
+If you have a multi-core machine, you can easily speed up your lapply calls by replacing them with the rather wonderful mclapply from the multicore package, but to effectively repeat processes in R, you really need to learn how to vectorise… Essentially, this means calling a function that runs its loops in C rather than R code. There are many built in functions that do this, such as the rowMeans or colMeans. -> compare!
+
+Also, consider filling a vector with a sequence of numbers. -> loop, seq, :
+
+
+http://www.johnmyleswhite.com/notebook/2013/12/22/the-relationship-between-vectorized-and-devectorized-code/
+
+ one starts with devectorized R code, then replaces it with vectorized R code and then finally implements this vectorized R code in devectorized C code. This last step is unfortunately invisible to many R users, who therefore think of vectorization per se as a mechanism for increasing performance. Vectorization per se does not help make code faster. What makes vectorization in R effective is that it provides a mechanism for moving computations into C, where a hidden layer of devectorization can do its mgic. 
+ 
+ 
+

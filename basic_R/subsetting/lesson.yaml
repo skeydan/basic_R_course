@@ -51,4 +51,78 @@
 - Class: text
   Output: Let's move on to subsetting lists now.
   
+#11
+- Class: cmd_question
+  Output: With lists, there's a distinction between extracting sublists and extracting single elements.
+    To extract a sublist, use single brackets. To extract a single element, use double brackets.
+    Now first create a nested list, called mylist, to play around with.
+    It's first element should be the vector of uppercase letters from A to D. 
+    The second element should be a vector of ones of length 10 (hint: the rep(<what>, <how often>) function is a comfortable way to create vectors of repeating elements.)
+    The last element should be just the number 7777.
+  AnswerTests: omnitest('mylist <- list(LETTERS[1:4], rep(1,10), 7777)')
+  Hint: Just type mylist <- list(LETTERS[1:4], rep(1,10), 7777).    
+  
+#11
+- Class: cmd_question
+  Output: Now, please extract the number 7777. (No need to store it in a variable.)
+  AnswerTests: omnitest(' mylist[[3]]')
+  Hint: Just type  mylist[[3]].   
+  
+#11
+- Class: cmd_question
+  Output: So even if the third element consists of just one item, we have to use double bracket syntax to get out the item (and not the sublist).
+    For comparison, use single brackets now to extract the sublist with single element 7777.
+  AnswerTests: omnitest('mylist[3]')
+  Hint: Just type  mylist[3].   
+  
+- Class: cmd_question
+  Output:To make things even clearer, compare the object types for both cases (using typeof()). To see everything at once, concatenate both function calls in a vector. 
+  AnswerTests: omnitest('c(typeof(mylist[[3]]), typeof(mylist[3]))')
+  Hint: Just type c(typeof(mylist[[3]]), typeof(mylist[3])). 
+  
+- Class: cmd_question
+  Output: Now, try extracting the B from the list.
+  AnswerTests: omnitest(any_of_exprs('mylist[[1]][[2]], mylist[[1]][2]')
+  Hint: Just type c(typeof(mylist[[3]]), typeof(mylist[3])). 
+  
+- Class: cmd_question
+  Output: What do you think will happen if you try to extract an element that does not exist?
+    It will throw a subscript out of bounds error.
+    However, if you assign to a non-existing index position, this will just add a new element to the list.
+    Assign the string "thisdidnotexistbefore" to position 5 of the list now.
+  AnswerTests: omnitest('mylist[[5]] <- "thisdidnotexistbefore"')
+  Hint: Just type mylist[[5]] <- "thisdidnotexistbefore". 
+  
+#13
+- Class: cmd_question
+  Output: What do you think will have happened to position 4 of the list? Just have a look - print the list.
+  AnswerTests: omnitest('mylist')
+  Hint: Just type mylist.   
+  
+#13
+- Class: cmd_question
+  Output: OK. Now remember that lists may also be named? In that case, you can access a value by it's key too.
+    Let's reuse our existing mylist, but let's name the elements first. I suggest you name them "first", "second", etc., until "fifth".
+  AnswerTests: omnitest('names(mylist) <- c("first", "second", "third", "fourth", "fifth")')
+  Hint: Just type names(mylist) <- c("first", "second", "third", "fourth", "fifth").  
+  
+#13
+- Class: cmd_question
+  Output: Now use the key to access the first element. (Just the element, not the sublist.)
+  AnswerTests: omnitest('mylist[["first"]]')
+  Hint: Just type names(mylist) <- c("first", "second", "third", "fourth", "fifth").  
+
+
+#13
+- Class: cmd_question
+  Output: If you wanted to extract an element from that vector now, you'd have to use indexing by position because the letters in the vector are not named.
+    How about you name them, now? The values are the (uppercase) letters from A to D, so why not name with the corresponding lowercase letters?
+  AnswerTests: omnitest('names(mylist[["first"]]) <- c('a','b','c','d')')
+  Hint: Just type names(mylist[["first"]]) <- c('a','b','c','d'). 
+  
+#13
+- Class: cmd_question
+  Output: So now you can use key syntax to access the C. Do it now.
+  AnswerTests: omnitest('mylist[["first"]][["c"]]')
+  Hint: Just type mylist[["first"]][["c"]].  
   
