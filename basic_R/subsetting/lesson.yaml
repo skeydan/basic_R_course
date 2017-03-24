@@ -126,3 +126,120 @@
   AnswerTests: omnitest('mylist[["first"]][["c"]]')
   Hint: Just type mylist[["first"]][["c"]].  
   
+#13
+- Class: text
+  Output: That's it for lists. The next data type we introduced was matrices.
+  
+#13
+- Class: cmd_question
+  Output: Can you please create the matrix m? Type m <- matrix(1:12, 2,6). 
+  AnswerTests: omnitest('m <- matrix(1:12, 2,6)')
+  Hint: Just type m <- matrix(1:12, 2,6).    
+  
+#13
+- Class: text
+  Output: With a matrix, to extract a row n (keeping all columns), you'd type m[n, ].
+    Conversely, to keep all rows but just extract a single column, you'd type m[ ,n].
+    To extract more than one column (or row, respectively) you'd concatenate the [row|column] indices.
+    
+#13
+- Class: cmd_question
+  Output: Try extracting the first 2 columns of m now. 
+  AnswerTests: omnitest(correctval = 'm[, 1:2]')
+  Hint: Just type m[, 1:2]. 
+    
+#13
+- Class: cmd_question
+  Output: Imagine you wanted to see all but the third column. You could you the "minus syntax" for that.
+  AnswerTests: omnitest(correctval = 'm[, -3]')
+  Hint: Just type m[, -3]. 
+  
+#13
+- Class: cmd_question
+  Output: Of course, instead of extracting rows or columns, you might want to extract single elements.
+    In that case, you'd specify m[r,c] to access the element in row r, column c.
+    So, extract the sixth element in row 2 now.
+  AnswerTests: omnitest(correctval = 'm[2,6]')
+  Hint: Just type m[2,6].  
+
+#13
+- Class: text
+  Output: We'll now see that with data.frame, it works quite similarly, just that in this case, you might also want to use column names instead of indices.
+    
+#13
+- Class: cmd_question
+  Output: Start by loading the diamonds dataset now. It is in the ggplot2 library so we need to do library(ggplot2) first.
+  AnswerTests: omnitest('library(ggplot2)')
+  Hint: Just type library(ggplot2).     
+    
+#13
+- Class: cmd_question
+  Output: Next, load the diamonds dataset.
+  AnswerTests: omnitest('data(diamonds')
+  Hint: Just type data(diamonds).  
+  
+#13
+- Class: cmd_question
+  Output: Look at the beginning of the dataframe to get an impression what it's about..
+  AnswerTests: omnitest('head(diamonds')
+  Hint: Just type head(diamonds).  
+  
+#13
+- Class: cmd_question
+  Output: Now say we want to extract row 2, columns cut and depth. Do this using indexing, as with the matrices.
+  AnswerTests: omnitest('diamonds[2,c(2,5)]')
+  Hint: Just type diamonds[2,c(2,5)].  
+  
+#13
+- Class: cmd_question
+  Output:You could also have used column names. Do this now.
+  AnswerTests: omnitest('diamonds[2,c('cut','depth')]')
+  Hint: Just type diamonds[2,c('cut','depth')].
+  
+#13
+- Class: cmd_question
+  Output:Now say you want to extract a complete column. You can use the bracket syntax with the column names, as with lists.
+    And as with lists, there's a difference whether you use double brackets or single brackets.
+    Extract clarity now, using single brackets, please.
+  AnswerTests: omnitest('diamonds['clarity']')
+  Hint: Just type diamonds['clarity'].
+  
+#13
+- Class: cmd_question
+  Output: What you got here - even though you extracted one column - is still a dataframe.
+    Just now it is a dataframe with one column. If you want the column contents as a vector, what do you do?
+  AnswerTests: omnitest('diamonds[['clarity']]')
+  Hint: Just type diamonds[['clarity']].
+  
+#13
+- Class: cmd_question
+  Output: If you want the vector, there's an alternative syntax: <dataframe>$<column_name>.
+    Use this syntax now to extract the price column
+  AnswerTests: omnitest('diamonds$price')
+  Hint: Just type diamonds$price.
+  
+#13
+- Class: cmd_question
+  Output: As the last thing we'll do with data.frames, for now, extract the 5th element of the carat column.
+  AnswerTests: omnitest('diamonds$carat[5]')
+  Hint: Just type diamonds$carat[5].  
+  
+  
+#13
+- Class: text
+  Output: Now there's still one data type we need to know how to extract elements of...
+   
+- Class: cmd_question
+  Output: ... the array. Let's start by creating the array a: a <- array(1:64, dim = c(2,8,4))
+  AnswerTests: omnitest(' a <- array(1:64, dim = c(2,8,4))')
+  Hint: Just type  a <- array(1:64, dim = c(2,8,4)).  
+  
+- Class: cmd_question
+  Output: How do you think you can access the element that has position 1 in the first dimension ("row"), position 2 in the second ("column"), and is in the last position in dimension 3?
+  AnswerTests: omnitest('a[1,2,4]')
+  Hint: Just type  a[1,2,4].  
+  
+#13
+- Class: text
+  Output: OK, that's it with subsetting! We move on now to a very important topic less known to programmers of more mainstream languages: vectorization.
+    (OK, that depends on what you call mainstream. If you use Python with numpy, you get to take advantage of vectorization, too.)
