@@ -12,7 +12,7 @@
   
   #2
 - Class: text
-  Output: Before we start, let me remind you that at any time, you can enter play() on the console and try out things for yourself.
+  Output: Again, at any time, you can enter play() on the console and try out things for yourself.
     In order to continue, just type nxt().
 
   #3
@@ -24,13 +24,13 @@
 - Class: cmd_question
   Output: For example, the number 122 is in fact just a vector of length 1, containing the number 1. 
     This is the reason you can not just type length(c(111,222,333)), but also length(111) ... do this now to see the output.
-  AnswerTests: omnitest(correctExpr='length(111)')
+  AnswerTests: omnitest('length(111)')
   Hint: Just type length(111).
   
   #5
 - Class: text
   Output: Data structures may be classified according to two main criteria - their dimensionality (1, 2, or n-dimensional) as well as
-    the homogeneity or heterogeneity of objects they may contain.
+    the homogeneity or heterogeneity of objects they contain.
     
   #6 
 - Class: text
@@ -41,13 +41,13 @@
 - Class: cmd_question
   Output: Let's start with vectors. Vectors are created using c(). 
     Create a vector v1 containing the elements "alpha", "beta" and "gamma" (in this order).
-  AnswerTests: omnitest(correctVal = c("alpha", "beta", "gamma"))
+  AnswerTests: omnitest('v1 <- c("alpha", "beta", "gamma")')
   Hint: Just type v1 <- c("alpha", "beta", "gamma").    
     
   #8  
 - Class: cmd_question
   Output: Next, create a vector v2 containing the numbers from 33 to 35.
-  AnswerTests: omnitest('v2 <- c(33,34,35)')
+  AnswerTests: any_of_exprs('v2 <- c(33,34,35)', 'v2 <- 33:35')
   Hint: Just type v2 <- c(33,34,35).
   
   #9
@@ -55,13 +55,19 @@
   Output: Now, concatenate both vectors and call the result v3.
   AnswerTests: omnitest('v3 <- c(v1,v2)')
   Hint: Just type v3 <- c(v1,v2).
-  
+ 
   #10
+- Class: cmd_question
+  Output: Please print v3 now to see how it looks.
+  AnswerTests: any_of_exprs('v3', 'print(v3)')
+  Hint: Just type v3. 
+  
+  #11
 - Class: text
   Output: As you see, the result is not a nested vector, but has been flattened. Vectors cannot contain other vectors.
    
  
-  #11
+  #12
 - Class: cmd_question
   Output: Now, given that we've concatenated two different data types, what type will the resulting vector have?
     As we said vectors always have to be of a single data type only.
@@ -70,76 +76,76 @@
   AnswerTests: any_of_exprs('typeof(v3)', 'is.character(v3)', 'is.numeric(v3)')
   Hint: Just type typeof(v3).
 
-  #12
-- Class: text
-  Output: Evidently, the numbers got coerced to strings. (It wouldn't make much sense otherwise.)
-  
   #13
+- Class: text
+  Output: Evidently, the numbers got coerced to strings. (It wouldn't make much sense the other way round.)
+  
+  #14
 - Class: cmd_question
   Output: Right now, we've created a numeric vector by enumerating every single item.
     We can create sequences of consecutive numbers in an easier way. Type 1:10 to see what happens.
   AnswerTests: omnitest('1:10')
   Hint: Just type 1:10.
   
-  #14
+  #15
 - Class: cmd_question
-  Output: The same thing works for ascending numbers. Use the above syntax to create a vector of numbers from -99 to -107.
+  Output: The same thing works for descending numbers. Use the above syntax to create a vector of numbers from -99 to -107.
   AnswerTests: omnitest('-99:-107')
   Hint: Just type -99:-107.
   
-  #15
+  #16
 - Class: text
   Output: Yet another way to create a sequence of numbers is using seq().
     seq() takes arguments by and length.out that allow you to specify a step size or the number of intermediate values to generate.
    
-  #16
+  #17
 - Class: text
   Output: The syntax is seq(from = 1, to = 1, by = ((to - from)/(length.out - 1)),
     length.out = NULL, along.with = NULL, ...)
     Here, you see that every parameter has a default value that will be used if you don't pass in anything.
 
-  #17
-- Class: cmd_question
-  Output: Now, create a vector containing the numbers 10,15,20,25 using seq.
-  AnswerTests: omnitest(correctVal = 'seq(10,25,5)')
-  Hint: Just type seq(10,25,5).
-  
   #18
 - Class: cmd_question
-  Output: Now, create a vector between 0 and 1 containing 10 entries.
-  AnswerTests: omnitest(correctVal = 'seq(0,1,length.out = 10')
-  Hint: Just type .
+  Output: Now, create a vector containing the numbers 10,15,20,25 using seq.
+  AnswerTests: any_of_exprs('seq(10,25,5)','seq(10,25, length.out = 4)')
+  Hint: Just type seq(10,25,5).
   
   #19
-- Class: text
-  Output: Let's pass on to lists.
+- Class: cmd_question
+  Output: Now, create a vector between 0 and 1 containing 10 entries.
+  AnswerTests: omnitest('seq(0,1,length.out = 10)')
+  Hint: Just type seq(0,1,length.out = 10).
   
   #20
 - Class: text
-  Output: When you need objects of different types in a one-dimensional container, you need to use a list instead of a vector.
-    Lists can even contain complex data structures like other lists, or dataframes.
+  Output: Let's pass on to lists.
   
   #21
-- Class: cmd_question
-  Output: Lists are created with the list() constructor, as in mylist <- list('a',1 , TRUE).
-    To try this out, create a list mylist containing the numbers from 1 to 3, the boolean FALSE, and the letters from x to z.
-  AnswerTests: omnitest(correctVal = 'mylist <- list(1, 2, 3, FALSE, "x", "y","z")')
-  Hint: Just type mylist <- list(1, 2, 3, FALSE, 'x', 'y','z')
+- Class: text
+  Output: When you need objects of different types in a one-dimensional container, you use a list instead of a vector.
+    Lists can even contain complex data structures like other lists, or dataframes.
   
   #22
 - Class: cmd_question
-  Output: If you did this as expected, you created a flat list, with no substructure.
-    Display the list to see how R prints lists.
-  AnswerTests: omnitest('mylist')
-  Hint: Just type mylist.
+  Output: Lists are created with the list() constructor, as in mylist <- list('a',1, TRUE).
+    To try this out, create a list mylist containing the numbers from 1 to 3, the boolean FALSE, and the letters from x to z.
+  AnswerTests: omnitest('mylist <- list(1, 2, 3, FALSE, "x", "y","z")')
+  Hint: Just type mylist <- list(1, 2, 3, FALSE, 'x', 'y','z')
   
   #23
+- Class: cmd_question
+  Output: If you did this as expected, you created a flat list, with no substructure.
+    Display the list to see how R prints lists.
+  AnswerTests: any_of_exprs('mylist','print(mylist)')
+  Hint: Just type mylist.
+  
+  #24
 - Class: cmd_question
   Output: How many elements does mylist have? You can find this out using the length() function.
   AnswerTests: omnitest('length(mylist)')
   Hint: Just type length(mylist).
   
-  #24
+  #25
 - Class: cmd_question
   Output: Perhaps you initially tried creating mylist using the colon operator.
     To see what happens in this case, create another list, list2, containing the same elements but this time, using 1:3 instead of enumerating every single number.
@@ -147,35 +153,37 @@
   AnswerTests: omnitest('list2 <- list(1:3, FALSE, letters[24:26])')
   Hint: Just type list2 <- list(1:3, FALSE, letters[24:26]).
   
-  #25
+  #26
 - Class: mult_question
   Output: What do you think is the length of this list?
   AnswerChoices: 1;3;6;7
   CorrectAnswer: 3
+  AnswerTests: omnitest(correctVal='3')
   
-  #26
+  #27
 - Class: cmd_question
   Output: Now test for yourself.
   AnswerTests: omnitest('length(list2)')
   Hint: Just type length(mylist2).
   
-  #
+  #28
 - Class: cmd_question
   Output: Also, look how it prints and watch the difference to the first list (mylist).
-  AnswerTests: omnitest('list2')
+  AnswerTests: any_of_exprs('list2','print(list2)')
   Hint: Just type list2.
   
-  #
+  #29
 - Class: text
-  Output: While you can also name vector elements, this is not usually done. With lists, however, it is different.
+  Output: While you can also name vector elements, this is not usually done.
+    With lists, however, it is different.
   
-  #
+  #30
 - Class: cmd_question
   Output: First now, find out if list2 has any named elements, using names().
   AnswerTests: omnitest('names(list2)')
   Hint: Just type names(list2).
   
-  #
+  #31
 - Class: cmd_question
   Output: So at the moment the elements are not named. 
     You can name them, "after the fact", doing something like names(somelist) <- c(name1, name2, name3, ...)
@@ -183,12 +191,13 @@
   AnswerTests: omnitest('names(list2) <- c("numbers", "logical", "letters")')
   Hint: Just type names(list2) <- c("numbers", "logical", "letters").
   
-  #
+  #32
 - Class: cmd_question
   Output: Print list2 to see how it looks now.
-  AnswerTests: omnitest('list2')
+  AnswerTests: any_of_exprs('list2','print(list2)')
   Hint: Just type list2.
   
+  #33
 - Class: cmd_question
   Output: Alternatively, you could have created the list including the names right from the beginning, using key - value pairs.
     For example, list(name1 = val1, name2 = val2, ...). Do this for our list2 now (thus overwriting the list2 variable).
@@ -196,72 +205,83 @@
   Hint: Just type list2 <- list(numbers = 1:3, logical = FALSE, letters = letters[24:26]).
   
   
-  #
+  #34
 - Class: text
   Output: While vectors and lists are both one-dimensional data types, one dimension often isn't enough.
     So let's move on to two dimensions.
     
-  #
+  #35
 - Class: text
-  Output: Here too, we have to distinguish two cases: homogeneous (all items are of the same type) and heterogeneous containers.
+  Output: Here too, we have to distinguish two cases - homogeneous (all items are of the same type) and heterogeneous containers.
        
-  #
+  #36
 - Class: text
   Output: Homogeneous two-dimensional data is stored in matrices. 
     Matrices are created using the matrix() function, passing in data (mostly as a vector) and telling  how to arrange the data in rows and columns.
-    For example, likes this: matrix(1:20, nrow = 2, ncol =10)
-    
+    For example, like this. matrix(1:20, nrow = 2, ncol =10)
+  
+  #37
 - Class: cmd_question
-  Output: To try this out, create a matrix of uppercase letters, from A to L,with 3 rows and 4 columns.
-  AnswerTests: omnitest('m <- matrix(LETTERS[1:12], nrow = 3, ncol = 4)')
+  Output: To try this out, create a matrix, named m, of uppercase letters, from A to L,with 3 rows and 4 columns.
+  AnswerTests: any_of_exprs('m <- matrix(LETTERS[1:12], nrow = 3, ncol = 4)','m <- matrix(LETTERS[1:12], 3,4)')
   Hint: Just type m <- matrix(LETTERS[1:12], nrow = 3, ncol = 4).
 
+  #38
 - Class: cmd_question
-  Output: Now have a look at m, to see what got created.
-  AnswerTests: omnitest('m')
+  Output: Now have a look at m.
+  AnswerTests: any_of_exprs('m','print(m)')
   Hint: Just type m.
 
+  #39
 - Class: text
   Output: As you see, the sequence of numbers got stored in column order.
     If you want them stored in row order, you need to tell R in the matrix constructor.
-    Matrix() has a byrow parameter for that. (Use byrow=TRUE to force that behavior.)
+    Matrix() has a byrow parameter for that - you would use byrow=TRUE to force that behavior.
   
-- Class: cmd_question
+  #40
+- Class: text
   Output: Matrices can have named rows and named columns.
-    Row names are set using rownames <- c(<name of first row>,<name of second row> ...). Column names are set accordingly.
-    To set both row names and column names at the same time, use dimnames, passing in a list where the first item is the vector of row names, and the second item is the vector of column names.
-    Please now name the rows of the matrix any way you please.
-  AnswerTests: omnitest('length(rownames(m)) > 0')
-  Hint: You could for example type rownames(m) <- c('a','b','c').
-  
+    Row names are set like this. rownames <- c(<name of first row>,<name of second row> ...).
+    Column names are set accordingly.
+
+  #41
+- Class: text
+  Output: To set both row names and column names at the same time, use dimnames, passing in a list where the first item is the vector of row names, and the second item is the vector of column names.
+   
+   
+  #42
 - Class: cmd_question
-  Output: Your matrix has 3 rows and 4 columns. This can also be seen from the output of nrow() and ncol(), or dim(), which combines both.
-    Use dim() to find out.
+  Output: The matrix m has 3 rows and 4 columns.
+    This can also be seen from the output of nrow() and ncol(), or dim(), which combines both.
+    Use dim() to check this now.
   AnswerTests: omnitest('dim(m)')
   Hint: Just type dim(m).  
 
+  #43
 - Class: cmd_question
   Output: You can also change dimensions with dim(). Try changing the matrix so it has 6 rows and 2 columns.
   AnswerTests: omnitest('dim(m) <- c(6,2)')
   Hint: Just type dim(m) <- c(6,2).  
   
+  #44
 - Class: cmd_question
   Output: Just to see what happened, print the matrix now.
-  AnswerTests: omnitest('m')
+  AnswerTests: any_of_exprs('m','print(m)')
   Hint: Just type m.    
   
-  #
+  #45
 - Class: text
   Output: OK. Now what if you need to have different data types in a two-dimensional (table-like) data structure?
     Like in a database table? ... right. The equivalent in R would be the data.frame.
     
-  #
+  #46
 - Class: text
   Output: In actual work, you will probably see data.frame a LOT.
     On the surface this looks like an Excel sheet.
     Basically, this is just a list of vectors. That is, the columns form a list, and each column is a vector.
     This is why each column may be of a different data type, but has to be homogeneous in itself.
-    
+  
+  #47  
 - Class: cmd_question
   Output: You create a data.frame in the same way as you create a list, just using data.frame as a constructor instead of list().
     For example, like this.
@@ -270,12 +290,13 @@
   AnswerTests: omnitest('df <- data.frame(firstcol = 1:3, secondcol = rep(777,3), thirdcol = c('desc', 'anotherdesc', 'yetanotherdesc'))')
   Hint: Just type df <- data.frame(firstcol = 1:3, secondcol = rep(777,3), thirdcol = c('desc', 'anotherdesc', 'yetanotherdesc')).  
   
-  #
+  #48
 - Class: text
   Output: In actual work, you will probably see data.frame a LOT.
     On the surface this looks like an Excel sheet.
     Basically, this is just a list of vectors. That is, the columns form a list, and each column is a vector.
     This is why each column may be of a different data type, but has to be homogeneous in itself.
+    
     
 - Class: cmd_question
   Output: You can use the same functions as with matrices to check the dimensions of a data.frame.
