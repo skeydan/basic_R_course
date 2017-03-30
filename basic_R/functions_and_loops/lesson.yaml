@@ -1,0 +1,19 @@
+- Class: meta
+  Course: basic_R
+  Lesson: functions_and_loops
+  Author: Sigrid Keydana
+  Type: Standard
+  Organization: Trivadis
+  Version: 2.4.3
+  
+#1
+- Class: text
+  Output: Remember how there are really no scalars in R?
+    This also means that operations usually thought of as being performed on scalars are performed on vector objects in R.
+    These operations are called vectorized.
+    
+#2
+- Class: cmd_question
+  Output: For example, please go ahead and define a vector v as the sequence of integers from -10 to 10.
+  AnswerTests: omnitest('v <- -10:10')
+  Hint: Just type v <- -10:10.
