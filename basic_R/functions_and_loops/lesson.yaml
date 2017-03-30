@@ -8,12 +8,126 @@
   
 #1
 - Class: text
-  Output: Remember how there are really no scalars in R?
-    This also means that operations usually thought of as being performed on scalars are performed on vector objects in R.
-    These operations are called vectorized.
-    
+  Output: This lesson is about functions, control structures and looping over data.
+    First we'll have a look at functions. 
+
 #2
+- Class: text
+  Output: Functions automatically return the value of the last line of code.
+    This is how you would define a function that adds 1 to its input
+
+#3
+- Class: text
+  Output: f <- function(x) x + 1
+  
+#4
+- Class: text
+  Output: If you have several statements in the function body, you need curly braces as delimiters, like this  
+    
+#5
+- Class: text
+  Output: f <- function(x) {a=x+1; b = a*2; b}
+  
+#6
+- Class: text
+  Output: Functions in R often have default arguments. These are specified in the parameter list as follows
+
+#7
+- Class: text
+  Output: f <- function(x=255) {x-22}  
+  
+#8
+- Class: text
+  Output: Functions do not necessarily have to be named. You can also create inline functions (closures).
+    We'll see an example of this at the end of this chapter.
+
+#8
+- Class: text
+  Output: Now let's quickly look at control structures in R. R has the usual if-else, as in
+
+#9
+- Class: text
+  Output: if (1==2) {print("strange")} else {print("expected")}
+  
+#10
+- Class: text
+  Output: What's very useful in data wrangling is the ifelse function.
+    ifelse is a vectorized function, which means you can use it on vectors, like columns of a data.frame.
+    
+#11  
 - Class: cmd_question
-  Output: For example, please go ahead and define a vector v as the sequence of integers from -10 to 10.
-  AnswerTests: omnitest('v <- -10:10')
-  Hint: Just type v <- -10:10.
+  Output: Go ahead and load the iris dataset so we can work with it.
+  AnswerTests: omnitest('data("iris")')
+  Hint: Just type data("iris").
+  
+#12
+- Class: cmd_question
+  Output: Now please take a look at the first rows in the dataset.
+  AnswerTests: omnitest('head(iris)')
+  Hint: Just type head(iris).
+  
+#13
+- Class: cmd_question
+  Output: Use ifelse to check which rows have a Sepal.Length greater than 6.9.
+  AnswerTests: omnitest('ifelse(iris$Sepal.Length>6.9,TRUE, FALSE)')
+  Hint: Just type ifelse(iris$Sepal.Length>6.9,TRUE, FALSE).
+  
+#14
+- Class: cmd_question
+  Output: As you see, you get back a vector of TRUEs and FALSEs.
+    You can use this to filter the rows according to whether they fulfill the condition.
+    Now, do the same thing as before but store the result in a variable longer_than.
+  AnswerTests: omnitest('longer_than <- ifelse(iris$Sepal.Length>6.9,TRUE, FALSE)')
+  Hint: Just type longer_than <- ifelse(iris$Sepal.Length>6.9,TRUE, FALSE).
+  
+#15
+- Class: cmd_question
+  Output: Now you can use subsetting to get all irises which have Sepal.Length > 6.9.
+  AnswerTests: omnitest('iris[longer_than,]')
+  Hint: Just type iris[longer_than,].  
+  
+#16
+- Class: text
+  Output: Finally, let's address the last subject of this chapter: looping.
+  
+#17
+- Class: text
+  Output: R has the usual for loop, but it is not used as much as you might think.
+    For one, whenever possible we normally want to use vectorization instead.
+    And second, there is the apply family of functions that - well - applies a function to all elements in a container.
+    
+#18
+- Class: text
+  Output: This is how a basic for loop looks.
+     
+#19
+- Class: text
+  Output: for (i in 1:10) {print(i)}
+  
+#20
+- Class: cmd_question
+  Output: Now use a for loop to print Petal.Length for the first 3 rows of the iris dataset.
+  AnswerTests: omnitest('for (i in iris[1:3,'Petal.Length']) {print(i)}')
+  Hint: Just type for (i in iris[1:3,'Petal.Length']) {print(i)}.  
+  
+#21
+- Class: cmd_question
+  Output: Compare this to how you would use vectorization to apply a transformation to that same subset of data.
+    Again for the first 3 rows, add 1 to Petal.Length now (using vectorization).
+  AnswerTests: omnitest('iris[1:3,'Petal.Length'] + 1')
+  Hint: Just type iris[1:3,'Petal.Length'] + 1.   
+  
+#22
+- Class: text
+  Output: Then, there's the apply family - apply, lapply, sapply, mapply...
+  
+#23
+- Class: text
+  Output: We'll just quickly look at apply and lapply / sapply here, because it's an advanced topic.
+    You use lapply to apply a function to every element of a vector, or list, and it returns the result as a list.
+    For example, here we apply an inline function to a vector of characters
+    
+    
+  
+  
+  
