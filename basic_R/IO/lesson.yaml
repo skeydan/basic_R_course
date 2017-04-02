@@ -1,0 +1,107 @@
+- Class: meta
+  Course: basic_R
+  Lesson: IO
+  Author: Sigrid Keydana
+  Type: Standard
+  Organization: Trivadis
+  Version: 2.4.3
+
+#1
+- Class: text
+  Output: In this lesson, we'll look at reading and storing data.
+    We'll start with, and focus on, the most common task - reading csv files.
+
+#2
+- Class: text
+  Output: Base R has a read.csv function you could use to read csv files.
+    Try this out now, like this
+
+#3
+- Class: cmd_question
+  Output: df <- read.csv(mtcars_file) 
+  AnswerTests: omnitest('df <- read.csv(mtcars_file)')
+  Hint: Just type df <- read.csv(mtcars_file) .
+    
+  
+#4
+- Class: cmd_question
+  Output: However, in practice, you will often be working with packages from the "tidyverse" for manipulating data.
+    In that case, you would load readr and use the similarly named read_csv function.
+    Please now repeat the above command, replacing read.csv by read_csv. 
+  AnswerTests: omnitest('df <- read_csv(mtcars_file)')
+  Hint: Just type df <- read_csv(mtcars_file) .
+
+#5
+- Class: text
+  Output: As you see, read_csv tells you the column format it inferred.        
+        
+#6
+- Class: text
+  Output: You can specify a different column format like this
+  
+#7
+- Class: text
+  Output: df <- read_csv(mtcars_file, col_types = cols(am = col_factor(levels = c(0,1))))
+
+#8
+- Class: text
+  Output: where we tell read_csv to read the data for column am into a factor with levels 0 and 1.
+
+#9
+- Class: cmd_question
+  Output: Try reading in the file again, this time treating cyl as a factor (with levels 4,6,8)
+  AnswerTests: omnitest(' df <- read_csv(mtcars_file, col_types = cols(cyl = col_factor(levels = c(4,6,8))))')
+  Hint: Just type df <- read_csv(mtcars_file, col_types = cols(cyl = col_factor(levels = c(4,6,8)))) .
+  
+#10
+- Class: text
+  Output: There are lots of other things you can customize using read_csv.
+    For example, you can specify your own column names directly on read-in, like this
+    
+    
+#10
+- Class: text
+  Output: df <- read_csv(mtcars_file, skip = 1, col_names = c('c1','c2','c3','c4','c5','c6','c7','c8','c9','c10','c11'))
+
+#10
+- Class: text
+  Output: where we also say skip=1 to skip the very first line of the csv file (containing the column names)
+  
+#10
+- Class: text
+  Output: You can also specify the column types.
+    There is a shortcut syntax for this where you specify the column types as a string, with every character representing one column.
+    For example, say we wanted to read in every column as a double. We write
+    
+#10
+- Class: text
+  Output: df <- read_csv(mtcars_file, col_types = 'ddddddddddd')
+    
+    
+#10
+- Class: text
+  Output: What if we just want specific columns, say mpg, wt and qsec? 
+    We use _ for the columns that are to be skipped...
+    
+#10
+- Class: text
+  Output: df <- read_csv(mtcars_file, col_types = 'd____dd____')
+    
+#9
+- Class: cmd_question
+  Output: Just type this last command now please.
+  AnswerTests: omnitest('df <- read_csv(mtcars_file, col_types = "d____dd____")')
+  Hint: Just type df <- read_csv(mtcars_file, col_types = 'd____dd____').
+      
+#9
+- Class: cmd_question
+  Output: Now look at df, to see the result.
+  AnswerTests: any_of_exprs('df','print(df)')
+  Hint: Just type df.
+  
+tbd    write_csv read_tsv gzip url
+
+http://vincentarelbundock.github.io/Rdatasets/csv/datasets/AirPassengers.csv
+
+
+  
