@@ -14,7 +14,7 @@
 #2
 - Class: text
   Output: Base R has a read.csv function you could use to read csv files.
-    Try this out now, like this
+    Try this out now, like this (the variable mtcars_file stores the location of the file)
 
 #3
 - Class: cmd_question
@@ -59,49 +59,133 @@
     For example, you can specify your own column names directly on read-in, like this
     
     
-#10
+#11
 - Class: text
   Output: df <- read_csv(mtcars_file, skip = 1, col_names = c('c1','c2','c3','c4','c5','c6','c7','c8','c9','c10','c11'))
 
-#10
+#12
 - Class: text
-  Output: where we also say skip=1 to skip the very first line of the csv file (containing the column names)
+  Output: where we also say skip=1 to skip the very first line of the csv file (containing the column names).
   
-#10
+#13
 - Class: text
-  Output: You can also specify the column types.
+  Output: Back to specifying column types.
     There is a shortcut syntax for this where you specify the column types as a string, with every character representing one column.
     For example, say we wanted to read in every column as a double. We write
     
-#10
+#14
 - Class: text
   Output: df <- read_csv(mtcars_file, col_types = 'ddddddddddd')
     
     
-#10
+#15
 - Class: text
   Output: What if we just want specific columns, say mpg, wt and qsec? 
     We use _ for the columns that are to be skipped...
     
-#10
+#16
 - Class: text
   Output: df <- read_csv(mtcars_file, col_types = 'd____dd____')
     
-#9
+#17
 - Class: cmd_question
   Output: Just type this last command now please.
   AnswerTests: omnitest('df <- read_csv(mtcars_file, col_types = "d____dd____")')
   Hint: Just type df <- read_csv(mtcars_file, col_types = 'd____dd____').
       
-#9
+#18
 - Class: cmd_question
   Output: Now look at df, to see the result.
   AnswerTests: any_of_exprs('df','print(df)')
   Hint: Just type df.
+
+#19
+- Class: text
+  Output: What if you have a dataset and want to write it out as a csv file?
+    You can use readr's write_csv.
   
-tbd    write_csv read_tsv gzip url
+#20
+- Class: text
+  Output: First, let's create a temporary file for R to write to, like this
 
-http://vincentarelbundock.github.io/Rdatasets/csv/datasets/AirPassengers.csv
+#21
+- Class: cmd_question
+  Output: mytempfile <- tempfile(). Do this now.
+  AnswerTests: omnitest('mytempfile <- tempfile()')
+  Hint: Just type mytempfile <- tempfile().
 
+#22
+- Class: cmd_question
+  Output: What is stored in mytempfile now? Have a look.
+  AnswerTests: any_of_exprs('mytempfile', 'print(mytempfile)')
+  Hint: Just type mytempfile.
 
+#23
+- Class: cmd_question
+  Output: Now we create a data frame to save. Name it df. It should have columns "id"", ranging from 1 to 3, and "name", the names being "Mary", "John", and "Luisa".
+  AnswerTests: any_of_exprs('df <- data.frame(id = 1:3, name = c("Mary", "John", "Luisa"))', 'df <- data.frame(id = c(1,2,3), name = c("Mary", "John", "Luisa"))')
+  Hint: Just type  df <- data.frame(id = 1:3, name = c("Mary", "John", "Luisa")).
+
+#24  
+- Class: cmd_question
+  Output: Now let's write our data frame to the tempfile. The syntax is write_csv(<data>, <path>).
+  AnswerTests: omnitest('write_csv(df, mytempfile)')
+  Hint: Just type write_csv(df, mytempfile).
+  
+#25
+- Class: cmd_question
+  Output: Want to see what was written to the tempfile?
+    As we're on linux, you can use system(paste('cat', mytempfile)) to display the file's contents.
+  AnswerTests: expr_uses_func('system')
+  Hint: Just type system(paste('cat', mytempfile)).
+    
+#26
+- Class: cmd_question
+  Output: Of course, we should now be able to read back the data into a new data.frame. Do this now, and call the data.frame mynewdf.
+  AnswerTests: omnitest('mynewdf <- read_csv(mytempfile)')
+  Hint: Just type mynewdf <- read_csv(mytempfile).
+  
+  
+#27
+- Class: text
+  Output: OK. Before we wrap up, let's quickly cover other file types.
+    readr has specialized functions to read other types of delimited files, like read_tsv() for reading tab-separated data.
+    
+
+#28
+- Class: text
+  Output: The general read_delim() allows you to specify your own separators.
+    
+#29
+- Class: text
+  Output: read_fwf() reads a fixed width file. 
+  
+#30
+- Class: cmd_question
+  Output: read_file reads a complete file into a character vector of length one (for plain text files).
+    Try this with our tempfile now. Store the string in the variable myfilecontent.
+  AnswerTests: omnitest('myfilecontent <- read_file(mytempfile)')
+  Hint: Just type 'myfilecontent <- read_file(mytempfile). 
+  
+#31
+- Class: cmd_question
+  Output: And now, look what's stored in myfilecontent.
+  AnswerTests: any_of_exprs('myfilecontent', 'print(myfilecontent)')
+  Hint: Just type 'myfilecontent <- read_file(mytempfile).  
+  
+#32
+- Class: text
+  Output: The readr functions are also able to read compressed files and to read from URLs.
+    No extra parameters are required.
+
+#33
+- Class: cmd_question
+  Output: To see this, read in the air passengers dataset from http://vincentarelbundock.github.io/Rdatasets/csv/datasets/AirPassengers.csv.
+    Store it in the variable air_passengers.
+  AnswerTests: omnitest("air_passengers <- read_csv('http://vincentarelbundock.github.io/Rdatasets/csv/datasets/AirPassengers.csv')")
+  Hint: Just type air_passengers <- read_csv('http://vincentarelbundock.github.io/Rdatasets/csv/datasets/AirPassengers.csv').  
+
+#34
+- Class: cmd_question
+  Output: OK, that's it for I/O! See you in another lesson.
   
