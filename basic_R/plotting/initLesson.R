@@ -5,3 +5,4 @@
 
 library(ggplot2)
 data(diamonds)
+options(warn = -1)
