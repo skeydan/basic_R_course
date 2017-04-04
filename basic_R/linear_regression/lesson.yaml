@@ -1,0 +1,45 @@
+- Class: meta
+  Course: basic_R
+  Lesson: linear_regression
+  Author: Sigrid Keydana
+  Type: Standard
+  Organization: Trivadis
+  Version: 2.4.3
+
+#1
+- Class: text
+  Output: As an introduction to doing data science with R, we'll have a quick look at linear regression.
+  
+#1
+- Class: text
+  Output: You'll see that using R for statistics, data science, machine learning etc. is incredibly comfortable.
+    Often, you just need one or two lines of code. 
+  
+#1
+- Class: text
+  Output: Let's jump right in! Say you were given the average brain and body weights for different species of mammals.
+    In fact, you're really being given these data now - we've loaded the "mammals" dataset from the MASS library for you.
+    
+#35
+- Class: cmd_question
+  Output: As usual, use head() on the dataset to inspect it.
+  AnswerTests: omnitest("head(mammals)")
+  Hint: Just type head(mammals). 
+
+#35
+- Class: cmd_question
+  Output: Do you think there is a relationship between body weight and brain weight?
+    Why not first plot the data? (ggplot2 has already been loaded.)
+  AnswerTests: omnitest("ggplot(data = mammals, mapping = aes(x = body, y = brain)) + geom_point()")
+  Hint: Just type ggplot(data = mammals, mapping = aes(x = body, y = brain)) + geom_point(). 
+  
+#35
+- Class: cmd_question
+  Output: You can also check the correlation between brain and body. (Call cor() on the dataset.)
+  AnswerTests: any_of_exprs("cor(mammals)", "cor(mammals$body, mammals$brain)")
+  Hint: Just type cor(mammals). 
+  
+#1
+- Class: text
+  Output: By now you probably think that there's a pretty strong relationship between body weight and brain weight.
+    

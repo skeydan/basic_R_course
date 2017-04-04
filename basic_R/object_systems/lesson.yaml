@@ -1,0 +1,52 @@
+- Class: meta
+  Course: basic_R
+  Lesson: object_systems
+  Author: Sigrid Keydana
+  Type: Standard
+  Organization: Trivadis
+  Version: 2.4.3
+
+#1
+- Class: text
+  Output: In this lesson, we'll take a quick look at object systems in R.
+    This is too complex a topic to cover in an introductory course like this one, so the main purpose is for you to know which systems there are and how to tell them apart in the wild.
+    
+#1
+- Class: text
+  Output: We'll also do a short example of R's oldest and most used object system, S3.
+  
+#1
+- Class: text
+  Output: First of all, R has three different object systems - S3, S4 and reference classes.
+  
+#1
+- Class: text
+  Output: The most important to know is, at the same time, the most surprising to people used to working with more "normal" object oriented languages.
+  
+#1
+- Class: text
+  Output: It is called S3.
+  
+#1
+- Class: text
+  Output: How do you know you're working with an S3 object?
+  
+  
+#1
+- Class: text
+  Output: Let's look at a data.frame!!
+  
+  
+  To determine the OO system of an object, you use a process of elimination. 
+  If !is.object(x), it’s a base object.
+  If !isS4(x), it’s S3. 
+  If !is(x, "refClass"), it’s S4; otherwise it’s RC.
+  
+   there’s no simple way to test if an object is an S3 object in base R. The closest you can come is is.object(x) & !isS4(x), i.e., it’s an object, but not S4. An easier way is to use pryr::otype(): 
+
+
+  
+  
+  
+  
+   
