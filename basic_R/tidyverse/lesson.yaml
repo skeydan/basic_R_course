@@ -240,39 +240,70 @@
     With dplyr, you do this using summarise(), passing in the dataset (only if you don't use the %>%!) and the aggregation function(s).
     Like this, for example
     
-#43    
+#44    
 - Class: text
   Output: InsectSprays %>% group_by(spray) %>% summarise(mean(count))
 
-#43    
+#45    
 - Class: text
   Output: You can also directly name the new, aggregate variable. Like this
   
-#43    
+#46    
 - Class: text
   Output: InsectSprays %>% group_by(spray) %>% summarise(avg_count = mean(count))
   
-#35
+#47
 - Class: cmd_question
   Output: How about you find the maximum count per spray now? 
     Just call it max_count.
   AnswerTests: omnitest("InsectSprays %>% group_by(spray) %>% summarise(max_count = max(count))")
   Hint: Just type InsectSprays %>% group_by(spray) %>% summarise(max_count = max(count)).  
    
-#35
+#48
 - Class: cmd_question
   Output: To wrap up, let's do some summarizing on a different dataset.
     Remember mtcars? Look at the first rows again. 
   AnswerTests: omnitest("head(mtcars)")
   Hint: Just type head(mtcars).  
   
-#35
-- Class: mult_question
-  Output: What's the (rounded) mean mpg for automatic transmission (am = 0)?
-  AnswerChoices: 17.1, 24.4, 21.1
-  CorrectAnswer: 17.1
-  AnswerTests: omnitest(correctVal='17.1')
-  Hint: Query the dataset and then, choose the correct answer.
+#49
+- Class: exact_question
+  Output: What's the mean mpg for automatic transmission (am = 0)? Round the value to 1 digit after the comma.
+    Please type play() now, find out the answer, and then come back, using nxt().
+  AnswerTests: omnitest('17.1')
+  Hint: Just type play() first and then, you could do something like mtcars %>% group_by(am) %>% summarise(mean(mpg)).
   
+
+#50
+- Class: exact_question
+  Output: Look at the maximum mpg by number of cylinders. Which number of cylinders has the maximum mpg?
+    Please type play() now, find out the answer, and then come back, using nxt().
+  AnswerTests: omnitest('4')
+  Hint: Just type play() first and then, you could do something like mtcars %>% group_by(cyl) %>% summarise(max(mpg)).
   
+
+#51
+- Class: exact_question
+  Output: How many cars have 5 gears?
+    Please type play() now, find out the answer, and then come back, using nxt().
+  AnswerTests: omnitest('5')
+  Hint: Just type play() first and then, you could do something like mtcars %>% filter(gear == 5) %>% nrow().
+  
+#52
+- Class: exact_question
+  Output: Among the cars that have 4 gears, what is the mean displacement (rounded to 1 digit after the comma) for those that have automatic transmission (am = 0)?
+    Please type play() now, find out the answer, and then come back, using nxt().
+  AnswerTests: omnitest('155.7')
+  Hint: Just type play() first and then, you could do something like mtcars %>% filter(gear == 4) %>% group_by(am) %>% summarise(mean(disp)).
+
+#53
+- Class: exact_question
+  Output: Finally for this lesson, what's the maximum mpg for all cars that weigh more than 3 tons?
+    Please type play() now, find out the answer, and then come back, using nxt().
+  AnswerTests: omnitest('24.4')
+  Hint: Just type play() first and then, you could do something like mtcars %>% filter(wt > 3) %>% summarise(max(mpg)).
+
+#54    
+- Class: text
+  Output: OK, that's it for querying data now! See you in the next lesson.
   
