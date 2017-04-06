@@ -11,42 +11,127 @@
   Output: In this lesson, we'll take a quick look at object systems in R.
     This is too complex a topic to cover in an introductory course like this one, so the main purpose is for you to know which systems there are and how to tell them apart in the wild.
     
-#1
+#2
 - Class: text
   Output: We'll also do a short example of R's oldest and most used object system, S3.
   
-#1
+#3
 - Class: text
-  Output: First of all, R has three different object systems - S3, S4 and reference classes.
+  Output: First of all, R has three different object systems - S3, S4 and reference classes (RC).
   
-#1
+#4
 - Class: text
-  Output: The most important to know is, at the same time, the most surprising to people used to working with more "normal" object oriented languages.
+  Output: The most important system to know is, at the same time, the most surprising to people used to working with more "normal" object oriented languages.
   
-#1
+#5
 - Class: text
   Output: It is called S3.
   
-#1
+#6
 - Class: text
   Output: How do you know you're working with an S3 object?
   
-  
-#1
+#7
 - Class: text
-  Output: Let's look at a data.frame!!
-  
-  
-  To determine the OO system of an object, you use a process of elimination. 
-  If !is.object(x), it’s a base object.
-  If !isS4(x), it’s S3. 
-  If !is(x, "refClass"), it’s S4; otherwise it’s RC.
-  
-   there’s no simple way to test if an object is an S3 object in base R. The closest you can come is is.object(x) & !isS4(x), i.e., it’s an object, but not S4. An easier way is to use pryr::otype(): 
+  Output: Let's look at a kind of object you've already used a lot - a data.frame.
 
+#8
+- Class: cmd_question
+  Output: Let's first create a data.frame to play with.
+    Create a matrix containing the numbers from 1 to 12, in 2 rows and 6 columns.
+    Use as.data.frame to convert the matrix into a data.frame, and call it df.
+  AnswerTests: omnitest('df <- as.data.frame(matrix(1:12, nrow = 2, ncol = 6))')
+  Hint: Just type df <- as.data.frame(matrix(1:12, nrow = 2, ncol = 6)).
 
   
+#9
+- Class: cmd_question
+  Output: First check if df is a base type (like characters or numbers) or an object.
+    You can use the is.object() function for that.
+  AnswerTests: omnitest('is.object(df)')
+  Hint: Just type is.object(df).
+
+#10
+- Class: cmd_question
+  Output: OK. So df is an object. Which type of object? Use isS4() to continue the investigation.
+    If isS4 returns FALSE, we have an S3 object.
+  AnswerTests: omnitest('isS4(df)')
+  Hint: Just type isS4(df).    
   
+#11
+- Class: text
+  Output: OK, so a data.frame is an S3 object. Actually, S3 is not much about objects.
   
+#12
+- Class: text
+  Output: Instead, it is about generic functions. Methods belong to generic functions, not to objects.
+      
+#13
+- Class: text
+  Output: If an object has implemented a generic function, then you can call the function on that object.
   
-   
+#14
+- Class: text
+  Output: For example, you can call print on a data.frame because data.frame has implemented the generic print() method.
+
+#15  
+- Class: cmd_question
+  Output: What other methods does data.frame implement?
+    You can check typing methods(class = <classname>). Do this now.
+  AnswerTests: omnitest("methods(class = 'data.frame')")
+  Hint: Just type methods(class = 'data.frame').     
+
+#16
+- Class: text
+  Output: Among these methods, you probably recognize one or the other!
+    summary(), for example, as you see now, is a generic S3 method.
+
+#17
+- Class: cmd_question
+  Output: Do you want to know what other classes have implementations of summary?
+    You can check this using methods(<methodname>).
+  AnswerTests: omnitest("methods('summary')")
+  Hint: Just type methods('summary').     
+
+#18
+- Class: text
+  Output: As you see, factors, for example, have an implementation of summary.
+    To see what summary does for a factor, call summary on a factor, like this
+
+#19  
+- Class: cmd_question
+  Output: summary(factor(c('a','b','a','c','b'), levels = c('a','b','c')))
+  AnswerTests: omnitest("summary(factor(c('a','b','a','c','b'), levels = c('a','b','c')))")
+  Hint: Just type summary(factor(c('a','b','a','c','b'), levels = c('a','b','c')))   
+  
+#20  
+- Class: cmd_question
+  Output: How about plotting? Find out which objects have implemented the S3 generic plot method.
+  AnswerTests: omnitest("methods('plot')")
+  Hint: Just type methods('plot').
+ 
+#21  
+- Class: cmd_question
+  Output: As you see there's factor again! What do you think will happen when you plot a factor?
+    Just try it out, using the inline factor definition we used above.
+  AnswerTests: omnitest("plot(factor(c('a','b','a','c','b'), levels = c('a','b','c')))")
+  Hint: Just type plot(factor(c('a','b','a','c','b'), levels = c('a','b','c')))")
+  
+#22
+- Class: text
+  Output: Ok. Before we wrap up, let's quickly touch the S4 and RC systems. 
+    Neither of them is used in the base R packages.
+    
+#23
+- Class: text
+  Output: S4, like S3, has methods belonging to functions, not classes, but it is more formal.
+  
+#24
+- Class: text
+  Output: Finally, reference classes are classes the way you'd expect from a language like Java.
+    
+#25
+- Class: text
+  Output: For R users, the most important system to know is S3.
+    If you want to create your own classes and are wondering which system to use, I'd recommend reading the OO chapter in Hadley Wickham's Advanced R book (http://adv-r.had.co.nz/) to find out what suits your purpose best.
+    
