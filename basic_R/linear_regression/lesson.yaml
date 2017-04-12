@@ -65,7 +65,7 @@
 #12
 - Class: text
   Output: The slope of the line indicates how y varies with x.
-  When x grows by 1 unit, how much does y grow (or shrink)?
+    When x grows by 1 unit, how much does y grow (or shrink)?
         
 #13
 - Class: text
@@ -112,12 +112,13 @@
   
 #20
 - Class: text
-  Output: In R, we use lm() to solve this for us. lm() is called with a formula as its first argument.
+  Output: In R, we use lm() to dosolve this for us. lm() is called with a formula as its first argument.
     A formula looks like this 
   
 #21
 - Class: text
-  Output: "<predicted> ~ <predictor>". For example, "price ~ carat" for a prediction of price by carat.
+  Output: predicted ~ predictor. 
+    For example, "price ~ carat" for a prediction of price by carat.
     Or "mpg ~ disp" for predicting miles per gallon by displacement.
     
 #22
@@ -128,13 +129,13 @@
 #23
 - Class: cmd_question
   Output: Now call lm for the prediction of brain mass by body mass. Store the result in a variable named fit.
-  AnswerTests: omnitest("fit <- lm('brain ~ body', mammals)")
-  Hint: Just type fit <- lm('brain ~ body', mammals).
+  AnswerTests: omnitest("fit <- lm(brain ~ body, mammals)")
+  Hint: Just type fit <- lm(brain ~ body, mammals).
   
 #24
 - Class: cmd_question
   Output: Now have a look at fit to see the result. The coefficient called body is the slope of the line.
-  AnswerTests: omnitest("fit")
+  AnswerTests: any_of_exprs("fit", "print(fit)")
   Hint: Just type fit.
   
 #25
@@ -145,7 +146,7 @@
     With every additional kilogram of body weight, brain weight increases by about 1 kilogram;
     With every additional gram of brain weight, body weight increases by about 1 kilogram
   CorrectAnswer:  With every additional kilogram of body weight, brain weight increases by about 1 gram
-  AnswerTests: omnitest(correctVal=' With every additional kilogram of body weight, brain weight increases by about 1 gram')
+  AnswerTests: omnitest(correctVal='With every additional kilogram of body weight, brain weight increases by about 1 gram')
   Hint: In linear regression, the direction of prediction matters. Predicting y by x is not the same as predicting x by y.
   
 
@@ -162,9 +163,8 @@
 #28
 - Class: cmd_question
   Output: Do this now.
-  AnswerTests: omnitest("ggplot(mammals, aes(body, brain)) + geom_point() + geom_abline(intercept = intercept, slope = slope, color = 'cyan') 
-")
-  Hint: Just type ggplot(mammals, aes(body, brain)) + geom_point() + geom_abline(intercept = intercept, slope = slope, color = 'cyan') 
+  AnswerTests: omnitest("ggplot(mammals, aes(body, brain)) + geom_point() + geom_abline(intercept =fit$coefficients[1], slope = fit$coefficients[2], color = 'cyan')")
+  Hint: Just type ggplot(mammals, aes(body, brain)) + geom_point() + geom_abline(intercept = fit$coefficients[1], slope = fit$coefficients[2], color = 'cyan') 
 
   
 #29
@@ -189,7 +189,7 @@
     
 #33
 - Class: text
-  Output: R-squared, the squared correlation coefficient, is the coefficient of determination.
+  Output: R-squared, the coefficient of determination, is the squared correlation coefficient.
     It indicates the percentage of variation in the dependent variable that is explained by the predictor.
     
 #34
@@ -211,16 +211,17 @@
   
 #37
 - Class: cmd_question
-  Output: Next, create a data frame, df_new, with one column. The column has name "body_new" and values the vector body_new.
-  AnswerTests: omnitest("df_new <- data_frame(body = body_new)")
+  Output: Next, create a data frame, df_new, with one column.
+    The column should have name "body", to match the column name in the original dataset, and values the vector body_new.
+  AnswerTests: any_of_exprs("df_new <- data_frame(body = body_new)", "df_new <- data.frame(body = body_new)")
   Hint: Just type df_new <- data_frame(body = body_new).
 
 #38
 - Class: cmd_question
   Output: Now, call predict with the fit object as the first parameter and passing in df_new as the newdata parameter.
     Call the result from predict brain_new.
-  AnswerTests: omnitest("brain_new <- predict(fit, newdata = data_frame(body = body_new))")
-  Hint: brain_new <- predict(fit, newdata = data_frame(body = body_new)).
+  AnswerTests: omnitest("brain_new <- predict(fit, newdata = df_new)")
+  Hint: brain_new <- predict(fit, newdata = df_new).
   
   
 #39
@@ -231,24 +232,25 @@
 #40
 - Class: text
   Output: ggplot(mammals, aes(body, brain)) + geom_point() + 
-  geom_point(data = data_frame(body = body_new, brain = brain_new), color = 'red', size = 3) + 
-  geom_abline(intercept = fit$coefficients[1], slope = fit$coefficients[2], color = 'cyan')  
+   geom_point(data = data_frame(body = body_new, brain = brain_new), color = 'red', size = 3) + 
+   geom_abline(intercept = fit$coefficients[1], slope = fit$coefficients[2], color = 'cyan')  
   
   
 #41
 - Class: cmd_question
   Output: Just copy-paste the above now, to see the result.
   AnswerTests: omnitest("ggplot(mammals, aes(body, brain)) + geom_point() + 
-  geom_point(data = data_frame(body = body_new, brain = brain_new), color = 'red', size = 3) + 
-  geom_abline(intercept = fit$coefficients[1], slope = fit$coefficients[2], color = 'cyan')")
+    geom_point(data = data_frame(body = body_new, brain = brain_new), color = 'red', size = 3) + 
+    geom_abline(intercept = fit$coefficients[1], slope = fit$coefficients[2], color = 'cyan')")
   Hint: Just type ggplot(mammals, aes(body, brain)) + geom_point() + 
-  geom_point(data = data_frame(body = body_new, brain = brain_new), color = 'red', size = 3) + 
-  geom_abline(intercept = fit$coefficients[1], slope = fit$coefficients[2], color = 'cyan')
+    geom_point(data = data_frame(body = body_new, brain = brain_new), color = 'red', size = 3) + 
+    geom_abline(intercept = fit$coefficients[1], slope = fit$coefficients[2], color = 'cyan')
 
 
 #42
 - Class: text
-  Output: However, let's not forget that these predictions are uncertain! They are uncertain for two reasons
+  Output: The predicted values are the big red points on the regression line.
+    So now we have predictions. But, let's not forget that these predictions are uncertain! They are uncertain for two reasons
   
 #43
 - Class: text
@@ -271,9 +273,9 @@
 
 #47
 - Class: cmd_question
-  Output: Please type body_new = seq(min(mammals$body), max(mammals$body), length = 100) to do this.
-  AnswerTests: omnitest("body_new = seq(min(mammals$body), max(mammals$body), length = 100)")
-  Hint: Just type body_new = seq(min(mammals$body), max(mammals$body), length = 100).
+  Output: Please type body_new <- seq(min(mammals$body), max(mammals$body), length = 100) to do this.
+  AnswerTests: omnitest("body_new <- seq(min(mammals$body), max(mammals$body), length = 100)")
+  Hint: Just type body_new <- seq(min(mammals$body), max(mammals$body), length = 100).
   
 #48
 - Class: text
@@ -281,9 +283,9 @@
 
 #49
 - Class: cmd_question
-  Output: Please now type brain_new <- as.data.frame(predict(fit, newdata = data_frame(body = body_new), interval = ("prediction")))
-  AnswerTests: omnitest("brain_new <- as.data.frame(predict(fit, newdata = data_frame(body = body_new), interval = ("prediction")))")
-  Hint: Just type brain_new <- as.data.frame(predict(fit, newdata = data_frame(body = body_new), interval = ("prediction"))).
+  Output: Please now type brain_new <- as.data.frame(predict(fit, newdata = data_frame(body = body_new), interval = "prediction"))
+  AnswerTests: omnitest("brain_new <- as.data.frame(predict(fit, newdata = data_frame(body = body_new), interval = 'prediction'))")
+  Hint: Just type brain_new <- as.data.frame(predict(fit, newdata = data_frame(body = body_new), interval = "prediction")).
   
   
 #50
@@ -293,8 +295,8 @@
 #51
 - Class: text
   Output: ggplot(mutate(brain_new, x = body_new), aes(x, fit)) + geom_ribbon(aes(ymin = lwr, ymax = upr), fill = 'cyan', alpha = 0.2) +
-  geom_abline(intercept = fit$coefficients[1], slope = fit$coefficients[2], color = 'cyan', size = 1) + 
-  ggtitle('Point predictions, with confidence intervals')
+    geom_abline(intercept = fit$coefficients[1], slope = fit$coefficients[2], color = 'cyan', size = 1) + 
+    ggtitle('Point predictions, with prediction intervals')
 
 
 #52
@@ -302,74 +304,80 @@
   Output: Please enter the above command to see the plot.
   AnswerTests: omnitest(" ggplot(mutate(brain_new, x = body_new), aes(x, fit)) + geom_ribbon(aes(ymin = lwr, ymax = upr), fill = 'cyan', alpha = 0.2) +
     geom_abline(intercept = fit$coefficients[1], slope = fit$coefficients[2], color = 'cyan', size = 1) + 
-    ggtitle('Point predictions, with confidence intervals')")
+    ggtitle('Point predictions, with prediction intervals')")
   Hint: Just type  ggplot(mutate(brain_new, x = body_new), aes(x, fit)) + geom_ribbon(aes(ymin = lwr, ymax = upr), fill = 'cyan', alpha = 0.2) +
     geom_abline(intercept = fit$coefficients[1], slope = fit$coefficients[2], color = 'cyan', size = 1) + 
-   ggtitle('Point predictions, with confidence intervals')
+    ggtitle('Point predictions, with prediction intervals')
   
-  
+
 #53
+- Class: text
+  Output: 
+    What you see here are the 95% prediction intervals for the predicted values.
+    You see that the estimated uncertainty is higher at the right end of the x axis, where we have fewer (in fact, very few!) values.
+
+#54
 - Class: text
   Output: OK, we're nearly finished with our introduction to linear regression!
     Remember, though, how in the beginning we looked at the scatterplot and wondered about the strength of the relationship?
 
-#54
-- Class: text
+#55
+- Class: cmd_question
   Output: To see the plot again now, just type ggplot(data = mammals, mapping = aes(x = body, y = brain)) + geom_point().
   AnswerTests: omnitest("ggplot(data = mammals, mapping = aes(x = body, y = brain)) + geom_point()")
   Hint: Just type ggplot(data = mammals, mapping = aes(x = body, y = brain)) + geom_point()
   
-#55
-- Class: text
-  Output: Now that we know a bit about line fitting, don't you think that the "best line" as determined by lm() might depend quite a bit on the point in the upper right?
-    What if that point was not there in the dataset? Or if both outliers, this and the less extreme one, weren't there?
-
-
 #56
 - Class: text
+  Output: Now that we know a bit about line fitting, don't you think that the "best line" as determined by lm() might depend quite a bit on the point in the upper right?
+    What if that point was not there in the dataset? Or if both outliers, this and the less extreme one in the middle, weren't there?
+
+
+#57
+- Class: cmd_question
   Output: Try that out for yourself. First, create a new dataset mammals2 with both outliers removed.
     You can use dplyr to filter out the rows for "African elephant" and "Asian elephant".
     (Mammals has a row.names attribute that contains the species names.
-    row.names may be used to filter just like column names (e.g., df %>% filter(row.names(df) != somerowname))
-  AnswerTests: omnitest("mammals2 <- mammals %>% filter(!row.names(mammals) %in% c('African elephant', 'Asian elephant'))")
+    row.names may be used for filtering just like column names (e.g., df %>% filter(row.names(df) != somerowname))
+  AnswerTests: any_of_exprs("mammals2 <- mammals %>% filter(!row.names(mammals) %in% c('African elephant', 'Asian elephant'))","mammals2 <- mammals %>% filter(!row.names(mammals) %in% c('Asian elephant','African elephant'))", "mammals2 <- mammals %>% filter(row.names(mammals) != 'African elephant' & row.names(mammals) != 'Asian elephant')")
   Hint: Just type mammals2 <- mammals %>% filter(!row.names(mammals) %in% c('African elephant', 'Asian elephant'))
   
-#57
-- Class: text
+#58
+- Class: cmd_question
   Output: Now create a scatterplot of mammals2, as we did with the original dataset above.
   AnswerTests: omnitest("ggplot(data = mammals2, mapping = aes(x = body, y = brain)) + geom_point()")
   Hint: Just type ggplot(data = mammals2, mapping = aes(x = body, y = brain)) + geom_point()
   
-#58  
-- Class: text
-  Output: Ok! Now fit a linear model to mammals2, using lm. Store the result in fit2.
-  AnswerTests: omnitest("fit2 <- lm('brain ~ body', mammals2)")
-  Hint: Just type fit2 <- lm('brain ~ body', mammals2)
-   
 #59  
-- Class: text
+- Class: cmd_question
+  Output: Ok! Now fit a linear model to mammals2, using lm. Store the result in fit2.
+  AnswerTests: omnitest("fit2 <- lm(brain ~ body, mammals2)")
+  Hint: Just type fit2 <- lm(brain ~ body, mammals2)
+   
+#60  
+- Class: cmd_question
   Output: Now inspect the slope coefficient of the fitted line, the p value and R squared for the model.
   AnswerTests: omnitest("summary(fit2)")
   Hint: Just type summary(fit2).
   
-#60
+#61
 - Class: mult_question
   Output: Which model, fit or fit2, has the higher R squared?
   AnswerChoices: fit;fit2
   CorrectAnswer:  fit
-  AnswerTests: omnitest(correctVal=' fit')
+  AnswerTests: omnitest(correctVal='fit')
   Hint: Scroll up to see R squared for the first fit (including all species).
   
-#61
-- Class: text
-  Output: So the inclusion, or exclusion, of two data points makes an enormous difference!
-
 #62
+- Class: text
+  Output: So the inclusion, or exclusion, of two data points makes an enormous difference here!
+
+#63
 - Class: text
   Output: Probably you can imagine that there's a lot of topics still to explore in linear regression.
     However, we'll have to leave that to another class.
     
-#63
+#64
 - Class: text
   Output: I hope you've enjoyed the lessons, and see you again in another class! Bye.
     
