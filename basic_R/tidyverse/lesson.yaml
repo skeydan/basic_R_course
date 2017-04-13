@@ -44,7 +44,7 @@
 - Class: text
   Output:  To filter the rows, you use the filter() function.
     filter() gets passed a dataset and a predicate.
-    For example, this is how you'd filter the data set so it contains just rows where Year > 1959
+    For example, this is how you'd filter the dataset so it contains just rows where Year > 1959
     
 #8
 - Class: text
@@ -117,6 +117,7 @@
 #20
 - Class: cmd_question
   Output: Now please do a descending sort by GNP of the filtered dataset, keeping just the rows where Year < 1958.
+    (Do the filter step first.)
   AnswerTests: omnitest('arrange(filter(longley, Year < 1958), desc(GNP))')
   Hint: Just type arrange(filter(longley, Year < 1958), desc(GNP))
   
@@ -132,7 +133,7 @@
   
 #23
 - Class: cmd_question
-  Output: OK! Now combine select, filter and arrange to display the Year and the GNP of all rows where Year > 1960, ordering the data by GNP.
+  Output: OK! Now combine select, filter and arrange to display the Year and GNP of all rows where Year > 1960, ordering the data by GNP.
     (Please use arrange, filter and select in this order in your expression.)
   AnswerTests: omnitest('arrange(filter(select(longley, Year, GNP), Year > 1960), GNP)')
   Hint: Just type arrange(filter(select(longley, Year, GNP), Year > 1960), GNP)
@@ -144,7 +145,7 @@
     
 #25
 - Class: text
-  Output: Like the unix pipe, dplyr's pipe allows you to write code in a fluent API, writing "as you think".
+  Output: Like the unix pipe, dplyr's pipe allows you to write code in a fluent API style, writing "as you think".
 
 #26
 - Class: text
@@ -199,7 +200,7 @@
 
 #36  
 - Class: text
-  Output: How about if you wanted to add new variables to a dataset? 
+  Output: How about adding new variables to a dataset? 
     You use mutate(<dataset>, <newvar> = expression) for that.
 
 #37
@@ -209,7 +210,7 @@
   
 #38
 - Class: text
-  Output: There's one thing to pay attention to though.
+  Output: There's one thing to pay attention to, though.
     In spite of its name, mutate() doesn't mutate the original dataset, but returns a new one.
     So you have to either assign the result to the variable holding the original dataset, or to a different variable.
   
@@ -222,7 +223,7 @@
   
 #40
 - Class: text
-  Output: OK! If you're used to working with SQL, there must be something you're missing - group by!
+  Output: OK! That's all very nice but ...if you're used to working with SQL, there must be something you're missing - group by!
   
 #41
 - Class: text
@@ -270,14 +271,16 @@
 - Class: exact_question
   Output: What's the mean mpg for automatic transmission (am = 0)? Round the value to 1 digit after the comma.
     Please type play() now, find out the answer, and then come back, using nxt().
+    In case you've already done that, now type your answer at the prompt.
   AnswerTests: omnitest('17.1')
-  Hint: Just type play() first and then, you could do something like mtcars %>% group_by(am) %>% summarise(mean(mpg)).
+  Hint: Just type play() first and then, you could do something like mtcars %>% group_by(am) %>% summarise(mean(mpg)) %>% round(1).
   
 
 #50
 - Class: exact_question
   Output: Look at the maximum mpg by number of cylinders. Which number of cylinders has the maximum mpg?
     Please type play() now, find out the answer, and then come back, using nxt().
+    In case you've already done that, now type your answer at the prompt.
   AnswerTests: omnitest('4')
   Hint: Just type play() first and then, you could do something like mtcars %>% group_by(cyl) %>% summarise(max(mpg)).
   
@@ -286,20 +289,23 @@
 - Class: exact_question
   Output: How many cars have 5 gears?
     Please type play() now, find out the answer, and then come back, using nxt().
+    In case you've already done that, now type your answer at the prompt.
   AnswerTests: omnitest('5')
-  Hint: Just type play() first and then, you could do something like mtcars %>% filter(gear == 5) %>% nrow().
+  Hint: Just type play() first and then, you could do something like mtcars %>% filter(gear == 5) %>% summarise(n()).
   
 #52
 - Class: exact_question
   Output: Among the cars that have 4 gears, what is the mean displacement (rounded to 1 digit after the comma) for those that have automatic transmission (am = 0)?
     Please type play() now, find out the answer, and then come back, using nxt().
+    In case you've already done that, now type your answer at the prompt.
   AnswerTests: omnitest('155.7')
-  Hint: Just type play() first and then, you could do something like mtcars %>% filter(gear == 4) %>% group_by(am) %>% summarise(mean(disp)).
+  Hint: Just type play() first and then, you could do something like mtcars %>% filter(gear == 4) %>% group_by(am) %>% summarise(mean(disp)) %>% round(1).
 
 #53
 - Class: exact_question
   Output: Finally for this lesson, what's the maximum mpg for all cars that weigh more than 3 tons?
     Please type play() now, find out the answer, and then come back, using nxt().
+    In case you've already done that, now type your answer at the prompt.
   AnswerTests: omnitest('24.4')
   Hint: Just type play() first and then, you could do something like mtcars %>% filter(wt > 3) %>% summarise(max(mpg)).
 

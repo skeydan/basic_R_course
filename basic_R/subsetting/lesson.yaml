@@ -39,7 +39,7 @@
 #8
 - Class: cmd_question
   Output:  Now, extract the last two elements from this vector.
-  AnswerTests: any_of_exprs('myvector[c(10,11)]','myvector[10:11]')
+  AnswerTests: any_of_exprs('myvector[c(10,11)]','myvector[10:11]', 'myvector[-1:-9]')
   Hint: Just type myvector[10:11].
   
 #9
@@ -61,7 +61,7 @@
     It's first element should be the vector of uppercase letters from A to D. 
     The second element should be a vector of ones of length 10 (hint - the rep(<what>, <how often>) function is a comfortable way to create vectors of repeating elements.)
     The last element should be just the number 7777.
-  AnswerTests: omnitest('mylist <- list(LETTERS[1:4], rep(1,10), 7777)')
+  AnswerTests: any_of_exprs('mylist <- list(LETTERS[1:4], rep(1,10), 7777)',"mylist <- list(c('A','B','C','D'), rep(1,10), 7777)")
   Hint: Just type mylist <- list(LETTERS[1:4], rep(1,10), 7777).    
   
 #13
@@ -106,7 +106,8 @@
   
 #19
 - Class: cmd_question
-  Output: OK. Now remember that lists may also be named? In that case, you can access a value by it's key, as well.
+  Output: OK. So the missing element is NULL.
+    Now remember that lists may also be named? In that case, you can access a value by it's key, as well.
     Let's reuse our existing mylist, but let's name the elements first. I suggest you name them "first", "second", etc., until "fifth".
   AnswerTests: omnitest('names(mylist) <- c("first", "second", "third", "fourth", "fifth")')
   Hint: Just type names(mylist) <- c("first", "second", "third", "fourth", "fifth").  
@@ -226,6 +227,7 @@
 #38
 - Class: cmd_question
   Output: As the last thing we'll do with data.frames, for now, extract the 5th element of the carat column.
+    Use the  <dataframe>$<column_name> syntax for this.
   AnswerTests: omnitest('diamonds$carat[5]')
   Hint: Just type diamonds$carat[5].  
   

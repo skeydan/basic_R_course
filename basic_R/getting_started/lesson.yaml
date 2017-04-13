@@ -91,7 +91,7 @@
 
   #15
 - Class: cmd_question
-  Output: Values like strings or numbers are fine, but we Now that we've seen the most important basic object types, let's talk about assignment.
+  Output: Now that we've seen the most important basic object types, let's talk about assignment.
     Assignment in R is done using the <- operator or alternatively, the equality sign.
     To try this, assign y the value 299.
   AnswerTests: any_of_exprs('y <- 299', 'y = 299')

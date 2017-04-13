@@ -54,13 +54,13 @@
 #10
 - Class: cmd_question
   Output: OK. So df is an object. Which type of object? Use isS4() to continue the investigation.
-    If isS4 returns FALSE, we have an S3 object.
+    If isS4() returns FALSE, we have an S3 object.
   AnswerTests: omnitest('isS4(df)')
   Hint: Just type isS4(df).    
   
 #11
 - Class: text
-  Output: OK, so a data.frame is an S3 object. Actually, S3 is not much about objects.
+  Output: OK, so a data.frame is an S3 object. Actually, S3 is not so much about objects.
   
 #12
 - Class: text
@@ -68,7 +68,7 @@
       
 #13
 - Class: text
-  Output: If an object has implemented a generic function, then you can call the function on that object.
+  Output: If an object has implemented a generic function, then you can call the method on that object.
   
 #14
 - Class: text
@@ -88,7 +88,7 @@
 
 #17
 - Class: cmd_question
-  Output: Do you want to know what other classes have implementations of summary?
+  Output: Do you want to know what other classes have implementations of summary()?
     You can check this using methods(<methodname>).
   AnswerTests: omnitest("methods('summary')")
   Hint: Just type methods('summary').     

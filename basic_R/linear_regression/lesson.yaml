@@ -69,7 +69,7 @@
         
 #13
 - Class: text
-  Output: In our example, when body mass increases by 1 kg, by how many grams does brain weight increase?
+  Output: In our example, when body mass increases by 1 kg, by how many grams does brain mass increase?
 
 #14
 - Class: text
@@ -112,7 +112,7 @@
   
 #20
 - Class: text
-  Output: In R, we use lm() to dosolve this for us. lm() is called with a formula as its first argument.
+  Output: In R, we use lm() to do this for us. lm() is called with a formula as its first argument.
     A formula looks like this 
   
 #21
@@ -194,7 +194,7 @@
     
 #34
 - Class: text
-  Output: Here, 87% of the variation in brain mass is explained by the variation in body mass.
+  Output: Here, 87% of the variation in brain mass is explained by variation in body mass.
     This is quite an impressive portion!
   
 #35
@@ -204,7 +204,7 @@
 #36
 - Class: cmd_question
   Output: The predict() function expects to be passed a model and a data frame, containing a column named the same as the predictor column in the original data frame.
-    So now, first create a vector of new values, body_new, you want to get predictions for.
+    So now, first create a vector of new values, named body_new, that you want to get predictions for.
     The values are 20, 100, 200, 1000 and 2000.
   AnswerTests: omnitest("body_new <- c(20, 100, 200, 1000, 2000)")
   Hint: Just type body_new <- c(20, 100, 200, 1000, 2000).
@@ -259,7 +259,7 @@
 #44
 - Class: text
   Output: Secondly, the concrete predictions are even more uncertain, as y is not 100% determined by x.
-    That is, even if our parameter estimations were 100% accurate, our predictions for y would still incorporate an error, as long as y is determined by other factors than x.
+    That is, even if our parameter estimations were 100% accurate, our predictions for y would still incorporate an error, as long as y is determined by factors other than x.
   
 #45
 - Class: text
@@ -374,7 +374,7 @@
 
 #63
 - Class: text
-  Output: Probably you can imagine that there's a lot of topics still to explore in linear regression.
+  Output: Probably you can imagine that there's a lot of topics still to be explored in linear regression.
     However, we'll have to leave that to another class.
     
 #64

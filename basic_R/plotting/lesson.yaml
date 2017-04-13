@@ -25,7 +25,7 @@
 - Class: cmd_question
   Output: Please now create a vector called xvec consisting of the numbers from 1 to 100.
   AnswerTests: omnitest('xvec <- 1:100')
-  Hint: Just type yvec <- 1:00.
+  Hint: Just type xvec <- 1:100.
 
 #5
 - Class: cmd_question
@@ -58,7 +58,7 @@
 #9
 - Class: cmd_question
   Output: Now we've seen scatterplots and line plots.
-    To plot a histogram, you use the hist function instead of plot.
+    To plot a histogram, you use the hist() function instead of plot.
     hist creates the histogram and plots it right away.
     Try this with the cyl column of the mtcars dataset now.
   AnswerTests: omnitest('hist(mtcars$cyl)')
@@ -88,7 +88,7 @@
  
 #13
 - Class: text
-  Output: R's basic plot system is great, but to create production quality graphics and/or more complex plots you would use ggplot2.
+  Output: R's basic plotting system is great, but to create production quality graphics and/or more complex plots you would use ggplot2.
  
 #14
 - Class: text
@@ -145,7 +145,7 @@
   
 #25
 - Class: text
-  Output: We can map further variables to other further aesthetics.
+  Output: We can map further variables to other aesthetics.
     For example, we can use color to distinguish between different cuts. Type
     
 #26

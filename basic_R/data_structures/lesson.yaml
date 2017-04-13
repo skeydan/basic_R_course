@@ -241,12 +241,12 @@
   #40
 - Class: text
   Output: Matrices can have named rows and named columns.
-    Row names are set like this. rownames <- c(<name of first row>,<name of second row> ...).
+    Row names are set like this. rownames(m) <- c(<name of first row>,<name of second row> ...).
     Column names are set accordingly.
 
   #41
 - Class: text
-  Output: To set both row names and column names at the same time, use dimnames, passing in a list where the first item is the vector of row names, and the second item is the vector of column names.
+  Output: To set both row names and column names at the same time, use dimnames(), passing in a list where the first item is the vector of row names, and the second item is the vector of column names.
    
    
   #42
