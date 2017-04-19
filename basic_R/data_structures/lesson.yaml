@@ -303,7 +303,7 @@
   #50
 - Class: text
   Output: To find out about the column names, you could use either names() or colnames().
-    There's also rownames() to either get or set row names.
+    There's also row.names() (or rownames()) to either get or set row names.
 
   #51
 - Class: cmd_question

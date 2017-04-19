@@ -86,8 +86,8 @@
 #16  
 - Class: cmd_question
   Output: Now, try extracting the B from the list.
-  AnswerTests: any_of_exprs('mylist[[1]][[2]]', 'mylist[[1]][2]')
-  Hint: Just type c(typeof(mylist[[3]]), typeof(mylist[3])). 
+  AnswerTests: any_of_exprs('mylist[[1]][[2]]', 'mylist[[1]][2]','mylist[[c(1,2)]]')
+  Hint: Just type mylist[[1]][[2]]. 
 
 #17  
 - Class: cmd_question
@@ -115,8 +115,8 @@
 #20
 - Class: cmd_question
   Output: Now use the key to access the first element. (Just the element, not the sublist.)
-  AnswerTests: omnitest('mylist[["first"]]')
-  Hint: Just type names(mylist) <- c("first", "second", "third", "fourth", "fifth").  
+  AnswerTests: any_of_exprs('mylist[["first"]]', 'mylist$first')
+  Hint: Just type mylist[["first"]]. 
 
 
 #21
