@@ -1,7 +1,15 @@
+##################################################################
+#                       The basics                               #
+##################################################################
+
+
+################ The first functions to learn ####################
 
 ?
 str
 
+
+################ Important operators and assignment ##############
 
 `%in%` # returns a logical vector indicating if there is a match or not for its left operand
 1:10 %in% c(1,3,5,9)
@@ -67,7 +75,12 @@ get("c", e1, inherits = FALSE)
 mget("c", e1, inherits = FALSE, ifnotfound = 999)
 
 class(get("%o%"))
-          
+     
+
+
+################ Comparison ##############
+
+     
 all.equal #utility to compare R objects x and y testing 'near equality'
 # S3 method for class 'numeric'
 # all.equal(target, current, tolerance = sqrt(.Machine$double.eps), scale = NULL, ..., check.attributes = TRUE)
@@ -104,7 +117,11 @@ y <- y[ok]
 
 
 is.finite
-          
+   
+
+################ Basic math ##############
+
+       
 `*`
 `+`
 `-`
@@ -122,15 +139,41 @@ atan2
 sin
 cos
 tan
+
 ceiling
 floor
 round
 trunc
-signif
-          exp, log, log10, log2, sqrt
+# signif vs. round
+x2 <- pi * 100^(-1:3)
+x2
+round(x2, 3)
+signif(x2, 3)
+
+
+exp
+log
+log10
+log2
+sqrt
           
-          max, min, prod, sum
-          cummax, cummin, cumprod, cumsum, diff
+max
+min
+#prod
+prod(1,2,3)
+prod(1:2,3:4)
+prod(NA,1)
+prod(NULL,1)
+prod(FALSE,1)
+sum
+
+#cummax
+cummax(c(1,4,2,6,4,8))
+cummin
+cumprod
+cumsum
+
+diff
           pmax, pmin
           range
           mean, median, cor, sd, var
@@ -186,3 +229,153 @@ signif
           apply
           tapply
           replicate
+
+          
+          
+##################################################################
+#                      Common data structures                    #
+##################################################################
+        
+          # Date time
+          ISOdate, ISOdatetime, strftime, strptime, date
+          difftime
+          julian, months, quarters, weekdays
+          library(lubridate)
+          
+          # Character manipulation 
+          grep, agrep
+          gsub
+          strsplit
+          chartr
+          nchar
+          tolower, toupper
+          substr
+          paste
+          trimws
+          library(stringr)
+          
+          # Factors 
+          factor, levels, nlevels
+          reorder, relevel
+          cut, findInterval
+          interaction
+          options(stringsAsFactors = FALSE)
+          
+          # Array manipulation
+          array
+          dim
+          dimnames
+          aperm
+          library(abind)          
+          
+          
+##################################################################
+#                       Statistics                               #
+##################################################################
+          
+          # Ordering and tabulating 
+          duplicated, unique
+          merge
+          order, rank, quantile
+          sort
+          table, ftable
+          
+          # Linear models 
+          fitted, predict, resid, rstandard
+          lm, glm
+          hat, influence.measures
+          logLik, df, deviance
+          formula, ~, I
+          anova, coef, confint, vcov
+          contrasts
+          
+          # Miscellaneous tests
+          apropos("\\.test$")
+          
+          # Random variables 
+          (q, p, d, r) * (beta, binom, cauchy, chisq, exp, f, gamma, geom, 
+                          hyper, lnorm, logis, multinom, nbinom, norm, pois, signrank, t, 
+                          unif, weibull, wilcox, birthday, tukey)
+          
+          # Matrix algebra 
+          crossprod, tcrossprod
+          eigen, qr, svd
+          %*%, %o%, outer
+          rcond
+          solve
+          
+          
+          
+          
+                   
+##################################################################
+#                      Working with R                            #
+##################################################################
+          
+          # Workspace 
+          ls, exists, rm
+          getwd, setwd
+          q
+          source
+          install.packages, library, require
+          
+          # Help
+          help, ?
+          help.search
+          apropos
+          RSiteSearch
+          citation
+          demo
+          example
+          vignette
+          
+          # Debugging
+          traceback
+          browser
+          recover
+          options(error = )
+          stop, warning, message
+          tryCatch, try         
+          
+          
+##################################################################
+#                       IO                                       #
+##################################################################
+          
+          
+          # Output
+          print, cat
+          message, warning
+          dput
+          format
+          sink, capture.output
+          sprintf
+          
+          # Reading and writing data
+          data
+          count.fields
+          read.csv, write.csv
+          read.delim, write.delim
+          read.fwf
+          readLines, writeLines
+          readRDS, saveRDS
+          load, save
+          library(foreign)
+          
+          # Files and directories 
+          dir
+          basename, dirname, tools::file_ext
+          file.path
+          path.expand, normalizePath
+          file.choose
+          file.copy, file.create, file.remove, file.rename, dir.create
+          file.exists, file.info
+          tempdir, tempfile
+          download.file, library(downloader)         
+          
+          
+          
+          
+          
+          
+          

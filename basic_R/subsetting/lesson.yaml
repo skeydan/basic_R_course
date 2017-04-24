@@ -114,7 +114,8 @@
   
 #20
 - Class: cmd_question
-  Output: Now use the key to access the first element. (Just the element, not the sublist.)
+  Output: Now use the key, not indexing, to access the first element.
+    This will give you the vector in the first position directly, NOT wrapped as a sublist.
   AnswerTests: any_of_exprs('mylist[["first"]]', 'mylist$first')
   Hint: Just type mylist[["first"]]. 
 
@@ -129,7 +130,7 @@
 #22
 - Class: cmd_question
   Output: So now you can use key syntax to access the C. Do it now.
-  AnswerTests: omnitest('mylist[["first"]][["c"]]')
+  AnswerTests: any_of_exprs('mylist[["first"]][["c"]]','mylist$first[["c"]]', 'mylist$first["c"]')
   Hint: Just type mylist[["first"]][["c"]].  
   
 #23
