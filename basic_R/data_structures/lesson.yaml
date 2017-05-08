@@ -22,7 +22,7 @@
     
   #4
 - Class: cmd_question
-  Output: For example, the number 122 is in fact just a vector of length 1, containing the number 1. 
+  Output: For example, the number 122 is in fact just a vector of length 1, containing the number 122. 
     This is the reason you can not just type length(c(111,222,333)), but also length(111) ... do this now to see the output.
   AnswerTests: omnitest('length(111)')
   Hint: Just type length(111).

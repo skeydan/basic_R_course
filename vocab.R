@@ -174,8 +174,21 @@ cumprod
 cumsum
 
 diff
-          pmax, pmin
-          range
+
+# parallel max/min
+pmax
+pmin
+pmin(5:1, pi)
+
+#range
+x <- c(NA, 1:3, -1:1/0); x
+range(x)
+range(x, na.rm = TRUE)
+range(x, finite = TRUE)
+range(1:10)
+range(1,10)
+
+
           mean, median, cor, sd, var
           rle
           

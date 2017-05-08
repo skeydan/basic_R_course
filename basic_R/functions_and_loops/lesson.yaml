@@ -110,7 +110,7 @@
 #21
 - Class: cmd_question
   Output: Now use a for loop to print Petal.Length for the first 3 rows of the iris dataset.
-  AnswerTests: any_of_exprs('for (i in iris[1:3,"Petal.Length"]) {print(i)}', 'for(i in iris[1:3,3]) print(i)','for (i in iris[1:3,"Petal.Length"]) print(i)','for (i in iris[1:3,3]) {print(i)}')
+  AnswerTests: any_of_exprs('for (i in iris[1:3,"Petal.Length"]) {print(i)}', 'for(i in iris[1:3,3]) print(i)','for (i in 1:3) print(iris$Petal.Length(i))', 'for (i in iris[1:3,"Petal.Length"]) print(i)','for (i in iris[1:3,3]) {print(i)}')
   Hint: Just type for (i in iris[1:3,'Petal.Length']) {print(i)}.  
   
 #22

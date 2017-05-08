@@ -283,7 +283,7 @@
 - Class: cmd_question
   Output: Now, please do the same, but add a smoothing line.
   AnswerTests: omnitest('ggplot(data = mtcars, mapping = aes(x = wt, y = mpg)) + geom_point() + geom_smooth()')
-  Hint: Just type ggplot(data = mtcars, mapping = aes(x = wt, y = mpg)) + geom_point().  
+  Hint: Just type ggplot(data = mtcars, mapping = aes(x = wt, y = mpg)) + geom_point() + geom_smooth().  
 
 #50
 - Class: text

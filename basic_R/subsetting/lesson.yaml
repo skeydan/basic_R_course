@@ -33,7 +33,7 @@
 #7
 - Class: cmd_question
   Output:  Create a vector of numbers from 10 to 20 and assign it to myvector.
-  AnswerTests: omnitest('myvector <- 10:20')
+  AnswerTests: any_of_exprs('myvector <- 10:20','myvector <- c(10:20)')
   Hint: Just type myvector <- 10:20.
   
 #8
