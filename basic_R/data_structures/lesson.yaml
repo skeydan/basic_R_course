@@ -148,10 +148,10 @@
   #25
 - Class: cmd_question
   Output: Perhaps you initially tried creating mylist using the colon operator.
-    To see what happens in this case, create another list, list2, containing the same elements but this time, using 1:3 instead of enumerating every single number.
+    To see what happens in this case, create another list, mylist2, containing the same elements but this time, using 1:3 instead of enumerating every single number.
     Also, instead of entering every character by itself, use letters[24:26] to access the last three letters of the alphabet.
-  AnswerTests: omnitest('list2 <- list(1:3, FALSE, letters[24:26])')
-  Hint: Just type list2 <- list(1:3, FALSE, letters[24:26]).
+  AnswerTests: omnitest('mylist2 <- list(1:3, FALSE, letters[24:26])')
+  Hint: Just type mylist2 <- list(1:3, FALSE, letters[24:26]).
   
   #26
 - Class: mult_question
@@ -163,14 +163,14 @@
   #27
 - Class: cmd_question
   Output: Now test for yourself.
-  AnswerTests: omnitest('length(list2)')
+  AnswerTests: omnitest('length(mylist2)')
   Hint: Just type length(mylist2).
   
   #28
 - Class: cmd_question
   Output: Also, look how it prints and watch the difference to the first list (mylist).
-  AnswerTests: any_of_exprs('list2','print(list2)')
-  Hint: Just type list2.
+  AnswerTests: any_of_exprs('mylist2','print(mylist2)')
+  Hint: Just type mylist2.
   
   #29
 - Class: text
@@ -179,30 +179,30 @@
   
   #30
 - Class: cmd_question
-  Output: First now, find out if list2 has any named elements, using names().
-  AnswerTests: omnitest('names(list2)')
-  Hint: Just type names(list2).
+  Output: First now, find out if mylist2 has any named elements, using names().
+  AnswerTests: omnitest('names(mylist2)')
+  Hint: Just type names(mylist2).
   
   #31
 - Class: cmd_question
   Output: So at the moment the elements are not named. 
     You can name them, "after the fact", doing something like names(somelist) <- c(name1, name2, name3, ...)
-    I suggest you name the elements of list2 "numbers", "logical", and "letters".
-  AnswerTests: omnitest('names(list2) <- c("numbers", "logical", "letters")')
-  Hint: Just type names(list2) <- c("numbers", "logical", "letters").
+    I suggest you name the elements of mylist2 "numbers", "logical", and "letters".
+  AnswerTests: omnitest('names(mylist2) <- c("numbers", "logical", "letters")')
+  Hint: Just type names(mylist2) <- c("numbers", "logical", "letters").
   
   #32
 - Class: cmd_question
-  Output: Print list2 to see how it looks now.
-  AnswerTests: any_of_exprs('list2','print(list2)')
-  Hint: Just type list2.
+  Output: Print mylist2 to see how it looks now.
+  AnswerTests: any_of_exprs('mylist2','print(mylist2)')
+  Hint: Just type mylist2.
   
   #33
 - Class: cmd_question
   Output: Alternatively, you could have created the list including the names right from the beginning, using key - value pairs.
-    For example, list(name1 = val1, name2 = val2, ...). Do this for our list2 now (thus overwriting the list2 variable).
-  AnswerTests: omnitest('list2 <- list(numbers = 1:3, logical = FALSE, letters = letters[24:26])')
-  Hint: Just type list2 <- list(numbers = 1:3, logical = FALSE, letters = letters[24:26]).
+    For example, list(name1 = val1, name2 = val2, ...). Do this for our mylist2 now (thus overwriting the mylist2 variable).
+  AnswerTests: omnitest('mylist2 <- list(numbers = 1:3, logical = FALSE, letters = letters[24:26])')
+  Hint: Just type mylist2 <- list(numbers = 1:3, logical = FALSE, letters = letters[24:26]).
   
   
   #34

@@ -388,7 +388,40 @@ range(1,10)
           
           
           
+          ##################################################################
+          #                      from: DWwR2                             #
+          ##################################################################          
+ 
+# table, margin.table, prop.table                   
+g <- factor(c("f", "m", "m", "m", "f", "m", "f", "m", "f", "f"))
+a <- factor(c('adult','adult','juvenile','juvenile','adult',
+                        'adult','adult','juvenile','adult','juvenile'))
+table(a, g)
+t <- table(a, g)
+margin.table(t, 1)
+margin.table(t, 2)
+          
+prop.table(t, 1)
+prop.table(t, 2)
+prop.table(t)
           
           
-          
+#gl
+gl(3, 5)
+gl(2, 5, labels = c("female", "male"))
+
+# || just uses first element of vector
+x <- c(-9, -3, 4, -1, 45, 90, -5)
+x <= -2 | x > 5
+x[x <= -2 | x > 5]
+x <= -2 || x > 5
+x[x <= -2 || x > 5]
+
+# cut
+data(Boston, package="MASS")
+Boston$newAge <- cut(Boston$age,5)
+table(Boston$newAge)
+Boston$newAge <- cut(Boston$age,5, 
+                     labels=c("verynew","new","normal","old","veryold"))
+table(Boston$newAge)
           
