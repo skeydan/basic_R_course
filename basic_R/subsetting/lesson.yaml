@@ -115,7 +115,6 @@
 #20
 - Class: cmd_question
   Output: Now use the key, not indexing, to access the first element.
-    This will give you the vector in the first position directly, NOT wrapped as a sublist.
   AnswerTests: any_of_exprs('mylist[["first"]]', 'mylist$first')
   Hint: Just type mylist[["first"]]. 
 
@@ -123,7 +122,7 @@
 #21
 - Class: cmd_question
   Output: If you wanted to extract an element from that vector now, you'd have to use indexing by position because the letters in the vector are not named.
-    How about you name them, now? The values are the (uppercase) letters from A to D, so why not name with the corresponding lowercase letters?
+    How about you name them, now? The values are the (uppercase) letters from A to D, so why not name them with the corresponding lowercase letters?
   AnswerTests: any_of_exprs("names(mylist[['first']]) <- c('a','b','c','d')","names(mylist[['first']]) <- letters[1:4]")
   Hint: Just type names(mylist[["first"]]) <- c('a','b','c','d'). 
   

@@ -43,9 +43,9 @@
   #8
 - Class: cmd_question
   Output: Numbers are self-evaluating so R just returns the input. 
-    Now type sin(1) + cos(0) + 23/24 to see R calculating a numerical result.
-  AnswerTests: omnitest(correctExpr='sin(1) + cos(0) + 23/24')
-  Hint: Just type sin(1) + cos(0) + 23/24.
+    Now type sin(1) + cos(0) to see R calculating a numerical result.
+  AnswerTests: omnitest(correctExpr='sin(1) + cos(0)')
+  Hint: Just type sin(1) + cos(0).
 
   #9
 - Class: text
@@ -70,7 +70,7 @@
   
   #12
 - Class: cmd_question
-  Output: Besides strings and numbers, another indispensable object type is "logical" - True or False.
+  Output: Besides strings and numbers, another indispensable object type is "logical" - TRUE or FALSE.
     On the console, test if TRUE equals FALSE, using double equality signs for the test.
   AnswerTests: any_of_exprs('TRUE == FALSE', 'FALSE == TRUE')
   Hint: Just type one of 'TRUE == FALSE' or 'FALSE == TRUE'.
@@ -84,10 +84,10 @@
     
   #14  
 - Class: cmd_question
-  Output: If you want to coerce another object type to a logical, you need to explicitly use as.logical. 
-    Try coercing the character string 'true' to a logical and see what happens.
-  AnswerTests: omnitest('as.logical("true")')
-  Hint: Just type as.logical("true").       
+  Output: So 1 is not TRUE because it is not a logical. However, when used at a place where a logical is expected, it will get coerced to a logical.
+    You can see this when you use a number in an if expression. Type if(1) 1 else 2 to see that.
+  AnswerTests: omnitest('if(1) 1 else 2')
+  Hint: Just type if(1) 1 else 2.       
 
   #15
 - Class: cmd_question

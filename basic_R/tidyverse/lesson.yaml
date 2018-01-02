@@ -1,9 +1,9 @@
 - Class: meta
   Course: basic_R
   Lesson: tidyverse
-  Author: your name goes here
+  Author: Sigrid
   Type: Standard
-  Organization: your organization's name goes here
+  Organization: Trivadis
   Version: 2.4.3
 
 #1
@@ -23,8 +23,8 @@
     We'll start with filtering. 
     
 #4
-- Class: cmd_question
-  Output: Before we start, load the longley dataset so we have something to work with.
+- Class: text
+  Output: We'll use the longley macroeconomic dataset.
   AnswerTests: omnitest('data("longley")')
   Hint: Just type data("longley")
 
@@ -166,13 +166,7 @@
   
 #30  
 - Class: text
-  Output: Now it's your turn to get used to the %>%! Let's switch to another dataset though, for variety's sake.
-    
-#31
-- Class: cmd_question
-  Output: Please load the "InsectSprays" dataset now.
-  AnswerTests: omnitest('data("InsectSprays")')
-  Hint: Just type  data("InsectSprays").
+  Output: Now it's your turn to get used to the %>%! Let's switch to another dataset though, for variety's sake: it's called "InsectSprays."
     
 #32
 - Class: cmd_question

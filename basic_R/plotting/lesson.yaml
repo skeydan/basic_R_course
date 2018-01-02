@@ -69,7 +69,7 @@
   Output: Another plot type you might want to use is a boxplot. Boxplots show the distribution of a variable.
     Try this with the wt column of the mtcars dataset now.
   AnswerTests: omnitest('boxplot(mtcars$wt)')
-  Hint: Just type hist(mtcars$wt).
+  Hint: Just type boxplot(mtcars$wt).
   
   
 #11

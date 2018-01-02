@@ -308,13 +308,8 @@
   #51
 - Class: cmd_question
   Output: To play around with data.frames, no need to create your own. R comes with a lot of datasets included.
-    To load, e.g., the mtcars dataset, type data("mtcars") now.
-  AnswerTests: omnitest('data("mtcars")')
-  Hint: Just type data("mtcars"). 
-  
-  #52
-- Class: cmd_question
-  Output: There's a set of useful commands you can use to find out things about your dataset.
+    One of the best known certainly is "mtcars".
+    There's a set of useful commands you can use to find out things about your dataset.
     For example, type head(mtcars,10) to see the first 10 rows.
   AnswerTests: omnitest('head(mtcars,10)')
   Hint: Just type head(mtcars,10).   
